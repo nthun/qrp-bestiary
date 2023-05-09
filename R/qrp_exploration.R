@@ -84,6 +84,13 @@ contributors_raw |>
   count(position = `unified position`, sort = TRUE)
 
 
+# Damages -----------------------------------------------------------------
+qrp_raw |> 
+  select(qrp, damage) |> 
+  separate_rows(damage, sep = "- |\n") |> 
+  filter(!damage %in% c("", "-", NA)) |> 
+  count(damage, sort = TRUE) |> 
+  print(n = 100)
 
 # Clues -------------------------------------------------------------------
 
