@@ -11,3 +11,5 @@ Encoding: WINDOWS-1252
 
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
+
+UseNativePipeOperator: Yes
