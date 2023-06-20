@@ -3,74 +3,78 @@
 library(tidyverse)
 library(googlesheets4)
 library(tidytext)
-library(stm)
-library(ldatuning)
+library(gt)
+# library(venndir)
+
+theme_set(theme_light())
 
 qrp_raw <- 
-  range_read("1Zl3Wc6JlmT4C2SgqC_6vlrl_1u-JDut1kYSuH-MDWhk") |> 
-  filter(include == 1)
+  range_read("1Zl3Wc6JlmT4C2SgqC_6vlrl_1u-JDut1kYSuH-MDWhk")
 
-qrp_def <- 
+qrp <- 
   qrp_raw |> 
-  select(qrp, definition)
-
-qrp_sparse <- 
-  qrp_def |> 
-  unnest_tokens(word, definition) |> 
-  anti_join(stop_words, by = "word") |> 
-  count(qrp, word) |> 
-  cast_sparse(qrp, word, n)
-
-# Optimal number of topics
-topics_rs <- FindTopicsNumber(qrp_sparse, topics = 3:15)
-FindTopicsNumber_plot(topics_rs)
-
-
-qrp_topic <- stm(qrp_sparse, K = 11)
-qrp_beta <- tidy(qrp_topic, matrix = "beta")
-qrp_gamma <- tidy(qrp_topic, matrix = "gamma", document_names = rownames(qrp_sparse))
-
-# Which terms belong to which topic
-qrp_beta |> 
-  group_by(topic) |> 
-  slice_max(beta, n = 10, with_ties = FALSE) |> 
-  ungroup() |> 
-  mutate(term = reorder_within(term, beta, topic)) |> 
-  ggplot() +
-  aes(x = beta, y = term, fill = topic) +
-  geom_col(show.legend = FALSE) +
-  scale_y_reordered() +
-  facet_wrap(~topic, scales = "free_y")
-
-# Which documents belong to which topic
-qrp_gamma |> 
-  ggplot() +
-  aes()
-
-
-# Create damage matrix ----------------------------------------------------
-
-qrp_raw |> 
-  select(qrp, damage) |> 
-  separate_rows(damage, sep = "\n|\r\n") |> 
-  mutate(damage = str_remove(damage, "- ") |> str_squish(),
-         value = "X") |> 
-  pivot_wider(names_from = damage,
-              values_from = value, values_fill = "") |> 
-  insight::print_html()
-  
+  filter(include == 1) |> 
+  select(-`assigned group`, -include) |> 
+  mutate(research_phase = fct_inorder(research_phase))
 
 
 # Qrps by research phase --------------------------------------------------
 
-qrp_raw |> 
+qrp |> 
   count(research_phase)
 
-qrp_raw |> 
+qrp |> 
+  select(research_phase, qrp) |> 
+  group_by(research_phase) |> 
+  mutate(qrp_order = row_number()) |> 
+  pivot_wider(names_from = research_phase, values_from = qrp) |> 
+  select(-qrp_order) |> 
+  gt() |> 
+  sub_missing(missing_text = "")
+
+
+# Detectability -----------------------------------------------------------
+
+qrp |> 
   count(detectability)
 
-# Contributors ------------------------------------------------------------
+# Umbrella terms ----------------------------------------------------------
+qrp |> 
+  separate_rows(umbrella_terms, sep = "\n") |> 
+  count(umbrella_terms, sort = TRUE)
 
+umbrella <-
+  qrp |> 
+  select(umbrella_terms, qrp) |> 
+  separate_rows(umbrella_terms, sep = "\n") |> 
+  mutate(umbrella_terms = if_else(umbrella_terms == "-", NA, umbrella_terms)) |> 
+  group_by(umbrella_terms) |> 
+  summarize(items = list(qrp))
+
+umbrella |> 
+  pull(items) |> 
+  set_names(umbrella$umbrella_terms)
+
+library(ggVennDiagram)
+
+umbrella |> 
+  pull(items) |> 
+  set_names(umbrella$umbrella_terms) |> 
+  ggvenn::ggvenn(show_elements = TRUE)
+
+library(venndir)
+
+umbrella |> 
+  pull(items) |> 
+  set_names(umbrella$umbrella_terms) |> 
+  venndir(
+        poly_alpha=0.3,
+        # label_preset="main items",
+        show_items="item",
+        proportional=TRUE)
+
+
+# Contributors ------------------------------------------------------------
 contributors_raw <- 
   range_read("1B6IdiEgawLZgNod61Pu5CP6ZfKYXh5Za5LFuWGxXkdg") 
 
@@ -85,18 +89,88 @@ contributors_raw |>
 
 
 # Damages -----------------------------------------------------------------
-qrp_raw |> 
+qrp |> 
   select(qrp, damage) |> 
   separate_rows(damage, sep = "- |\n") |> 
   filter(!damage %in% c("", "-", NA)) |> 
   count(damage, sort = TRUE) |> 
   print(n = 100)
 
-# Clues -------------------------------------------------------------------
+# TODO: abbreviate damages
+qrp |> 
+  select(qrp, damage) |> 
+  separate_rows(damage, sep = "\n|\r\n") |> 
+  mutate(damage = str_remove(damage, "- ") |> str_squish(),
+         value = "X",
+         damage = fct_lump_min(damage, min = 2, other_level = "Other damage")) |> 
+  pivot_wider(names_from = damage,
+              values_from = value, 
+              values_fn = first,
+              values_fill = "") |> 
+  relocate(-`Other damage`) |> 
+  gt()
 
-qrp_raw |> 
+# List other damages
+qrp |> 
+  separate_rows(damage, sep = "\n|\r\n") |> 
+  transmute(
+            damage = str_remove(damage, "- ") |> str_squish(),
+            damage_other = fct_lump_min(damage, min = 2, other_level = "Other damage")) |> 
+  filter(damage_other == "Other damage") |> 
+  pull(damage)
+
+
+# Remedies -----------------------------------------------------------------
+qrp |> 
+  select(qrp, remedy) |> 
+  separate_rows(remedy, sep = "- |\n") |> 
+  filter(!remedy %in% c("", "-", NA)) |> 
+  count(remedy, sort = TRUE) |> 
+  print(n = 100)
+
+
+
+# Clues -------------------------------------------------------------------
+qrp |> 
   select(qrp, clues) |> 
   separate_rows(clues, sep = "- |\n") |> 
   filter(!clues %in% c("", "-", NA)) |> 
   count(clues, sort = TRUE) |> 
   print(n = 100)
+
+
+
+# Create a document that can be inserted into the manuscript --------------
+yaml_header <- 
+"
+---
+output: 
+  word_document:
+    reference_docx: ../docs/docx-template.docx
+---
+"
+  
+qrp_template <- read_file("docs/qrp_list_template.txt")
+
+qrp_text <- 
+  qrp |> 
+  mutate(clues = if_else(clues == "-", "None  \n", clues),
+         aliases = if_else(is.na(aliases), "-  \n", aliases),
+         umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
+         `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- ")) |> 
+  select(-`assigned group`, -`Phase order`, -`qrp order`) |> 
+  mutate(qrp = fct_inorder(qrp),
+         qrp_id = row_number()) |> 
+  group_by(qrp_id) |> 
+  nest() |> 
+  mutate(text = map(data, ~str_glue(qrp_template))) |> 
+  unnest(text) |> 
+  pull(text)
+  
+
+paste0(qrp_text, collapse = "\n") %>%
+  paste0(yaml_header, .,collapse = "\n\n") |> 
+  write_lines("docs/qrp_text.Rmd")
+
+rmarkdown::render("docs/qrp_text.Rmd", output_file = "qrp_text.docx")
+

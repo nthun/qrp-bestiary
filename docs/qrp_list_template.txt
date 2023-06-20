@@ -1,0 +1,36 @@
+### {.$qrp}  
+
+**Definition**    
+
+{.$definition}  
+
+**Alias(es) and related concepts**
+
+{.$aliases}  
+
+**Umbrella term(s)**
+
+{.$umbrella_terms}  
+
+**Examples**  
+
+{.$`Example(s)`}  
+
+**Potential damages**  
+
+{.$damage}    
+
+**Remedies**  
+
+{.$remedy}    
+
+**Detectability**  
+
+{.$detectability}
+
+**Clues to detect**  
+
+{.$clues}  
+
+
+
