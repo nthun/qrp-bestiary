@@ -19,16 +19,16 @@ qrp <-
 
 
 # Qrps by research phase --------------------------------------------------
-
 qrp |> 
   count(research_phase)
 
 qrp |> 
   select(research_phase, qrp) |> 
   group_by(research_phase) |> 
+  arrange(research_phase, qrp) |> 
   mutate(qrp_order = row_number()) |> 
   pivot_wider(names_from = research_phase, values_from = qrp) |> 
-  select(-qrp_order) |> 
+  select(-qrp_order) |>
   gt() |> 
   sub_missing(missing_text = "")
 
@@ -47,7 +47,7 @@ umbrella <-
   qrp |> 
   select(umbrella_terms, qrp) |> 
   separate_rows(umbrella_terms, sep = "\n") |> 
-  mutate(umbrella_terms = if_else(umbrella_terms == "-", NA, umbrella_terms)) |> 
+  # mutate(umbrella_terms = if_else(umbrella_terms == "-", NA, umbrella_terms)) |> 
   group_by(umbrella_terms) |> 
   summarize(items = list(qrp))
 
@@ -72,6 +72,19 @@ umbrella |>
         # label_preset="main items",
         show_items="item",
         proportional=TRUE)
+
+# As a table
+qrp |> 
+  select(umbrella_terms, qrp) |> 
+  separate_rows(umbrella_terms, sep = "\n") |> 
+  mutate(umbrella_terms = if_else(umbrella_terms == "-", NA, umbrella_terms)) |>  
+  group_by(umbrella_terms) |> 
+  arrange(umbrella_terms, qrp) |> 
+  mutate(qrp_order = row_number()) |> 
+  pivot_wider(names_from = umbrella_terms, values_from = qrp) |> 
+  select(-qrp_order) |>
+  gt() |> 
+  sub_missing(missing_text = "")
 
 
 # Contributors ------------------------------------------------------------
