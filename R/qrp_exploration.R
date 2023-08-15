@@ -4,7 +4,7 @@ library(tidyverse)
 library(googlesheets4)
 library(tidytext)
 library(gt)
-# library(venndir)
+library(janitor)
 
 theme_set(theme_light())
 
@@ -200,4 +200,55 @@ paste0(qrp_text, collapse = "\n") %>%
   write_lines("docs/qrp_text.Rmd")
 
 rmarkdown::render("docs/qrp_text.Rmd", output_file = "qrp_text.docx")
+
+
+# Create a landscape layout -----------------------------------------------
+page_size = 5
+
+qrp_long <-   
+  qrp |> 
+  mutate(clues = if_else(clues == "-", "None  \n", clues),
+         aliases = if_else(is.na(aliases), "-  \n", aliases),
+         umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
+         `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- "),
+         qrp = fct_inorder(qrp),
+         page = ((row_number() - 1) %/% page_size) + 1
+         ) 
+
+# Create a broken up table and reassemble to be able to print properly
+
+qrp_assemled <-
+  qrp_long |> 
+  select(qrp, `Alias(es) & related concepts` = aliases, Definition = definition, `Umbrella term(s)` = umbrella_terms, `Research phase` = research_phase, `Example(s)`, `Potential damages` = damage, Remedies = remedy, Detectability = detectability, Clues = clues, Sources = `source(s)`, page) |> 
+  group_by(page) |> 
+  nest() |> 
+  mutate(data = map(data, ~ t(.x) %>%
+                            row_to_names(row_number = 1) %>%
+                            as.data.frame() %>%
+                            rownames_to_column("Attribute")
+                )
+         )
+ 
+# Create a function to apply formatting to all subtables 
+format_table <- function(df){
+  gt(df) |> 
+    opt_row_striping(row_striping = TRUE) |> 
+    opt_table_lines(extent = "none") |> 
+    cols_width(starts_with("Attribute") ~ px(120),
+               everything() ~ px(270)) |> 
+    tab_options(column_labels.background.color = "#CCCCCC",
+                column_labels.font.weight = "bold",
+                row.striping.background_color = "#EEEEEE",
+                table.align = "left")
+}
+
+
+# Create the table
+qrp_table <- 
+  pull(qrp_assemled, data) |> 
+  map(format_table) |> 
+  gt_group(.list = _)
+
+gtsave(qrp_table, "docs/qrp_table.html")
+
 
