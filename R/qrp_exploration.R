@@ -18,7 +18,7 @@ qrp <-
   mutate(research_phase = fct_inorder(research_phase))
 
 
-# Qrps by research phase --------------------------------------------------
+# QRPs by research phase --------------------------------------------------
 qrp |> 
   count(research_phase)
 
@@ -32,11 +32,6 @@ qrp |>
   gt() |> 
   sub_missing(missing_text = "")
 
-
-# Detectability -----------------------------------------------------------
-
-qrp |> 
-  count(detectability)
 
 # Umbrella terms ----------------------------------------------------------
 qrp |> 
@@ -102,20 +97,23 @@ contributors_raw |>
 
 
 # Damages -----------------------------------------------------------------
-qrp |> 
-  select(qrp, damage) |> 
-  separate_rows(damage, sep = "- |\n") |> 
-  filter(!damage %in% c("", "-", NA)) |> 
-  count(damage, sort = TRUE) |> 
-  print(n = 100)
+min_damage_n = 3
 
-# TODO: abbreviate damages
 qrp |> 
-  select(qrp, damage) |> 
+  select(qrp, damage_aggregated) |> 
+  separate_rows(damage_aggregated, sep = "- |\n") |> 
+  filter(!damage_aggregated %in% c("", "-", NA)) |> 
+  count(damage_aggregated, sort = TRUE) |> 
+  filter(n <= 3) |> 
+  print(n = 100) 
+
+# Create a table, with aggregated damages
+qrp |> 
+  select(qrp, damage = damage_aggregated) |> 
   separate_rows(damage, sep = "\n|\r\n") |> 
   mutate(damage = str_remove(damage, "- ") |> str_squish(),
          value = "X",
-         damage = fct_lump_min(damage, min = 2, other_level = "Other damage")) |> 
+         damage = fct_lump_min(damage, min = min_damage_n, other_level = "Other damage")) |> 
   pivot_wider(names_from = damage,
               values_from = value, 
               values_fn = first,
@@ -124,13 +122,14 @@ qrp |>
   gt()
 
 # List other damages
+
 qrp |> 
-  separate_rows(damage, sep = "\n|\r\n") |> 
+  separate_rows(damage_aggregated, sep = "\n|\r\n") |> 
   transmute(
-            damage = str_remove(damage, "- ") |> str_squish(),
-            damage_other = fct_lump_min(damage, min = 2, other_level = "Other damage")) |> 
+            damage = str_remove(damage_aggregated, "- ") |> str_squish(),
+            damage_other = fct_lump_min(damage, min = min_damage_n, other_level = "Other damage")) |> 
   filter(damage_other == "Other damage") |> 
-  pull(damage)
+  count(damage, sort = TRUE)
 
 
 # Remedies -----------------------------------------------------------------
@@ -141,6 +140,10 @@ qrp |>
   count(remedy, sort = TRUE) |> 
   print(n = 100)
 
+# Detectability -----------------------------------------------------------
+
+qrp |> 
+  count(detectability)
 
 
 # Clues -------------------------------------------------------------------
@@ -150,6 +153,17 @@ qrp |>
   filter(!clues %in% c("", "-", NA)) |> 
   count(clues, sort = TRUE) |> 
   print(n = 100)
+
+# By research phase
+# TODO: Instead of this, determine the place of each clue in a publication in reading order, e.g., introduction, methods, results, etc.
+# This will be needed for the app
+qrp |> 
+  select(qrp, research_phase, clues) |> 
+  separate_rows(clues, sep = "- |\n") |> 
+  filter(!clues %in% c("", "-", NA)) |> 
+  count(research_phase, sort = TRUE) |> 
+  print(n = 100)
+
 
 
 
@@ -171,7 +185,7 @@ qrp_text <-
          aliases = if_else(is.na(aliases), "-  \n", aliases),
          umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
          `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- ")) |> 
-  select(-`assigned group`, -`Phase order`, -`qrp order`) |> 
+  select(-phase_order, -qrp_order) |> 
   mutate(qrp = fct_inorder(qrp),
          qrp_id = row_number()) |> 
   group_by(qrp_id) |> 

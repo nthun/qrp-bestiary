@@ -1,36 +1,37 @@
-### {.$qrp}  
+**{.$qrp}**  
 
-**Definition**    
+_Definition_    
 
 {.$definition}  
 
-**Alias(es) and related concepts**
+_Alias(es) and related concepts_
 
 {.$aliases}  
 
-**Umbrella term(s)**
+_Umbrella term(s)_
 
 {.$umbrella_terms}  
 
-**Examples**  
+_Examples_  
 
 {.$`Example(s)`}  
 
-**Potential damages**  
+_Potential damages_  
 
 {.$damage}    
 
-**Remedies**  
+_Remedies_  
 
 {.$remedy}    
 
-**Detectability**  
+_Detectability_  
 
 {.$detectability}
 
-**Clues to detect**  
+_Clues to detect_  
 
 {.$clues}  
 
 
+---
 
