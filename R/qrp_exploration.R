@@ -205,6 +205,9 @@ rmarkdown::render("docs/qrp_text.Rmd", output_file = "qrp_text.docx")
 # Create a landscape layout -----------------------------------------------
 page_size = 5
 
+# TODO: Sort damages, clues, remedies, and sources based on alphabetic order
+# TODO: keep the bullet point look for damages, clues, remedies, and sources 
+
 qrp_long <-   
   qrp |> 
   mutate(clues = if_else(clues == "-", "None  \n", clues),
@@ -212,6 +215,7 @@ qrp_long <-
          umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
          `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- "),
          qrp = fct_inorder(qrp),
+         # To create a paged wide layout, define the number of columns on the page
          page = ((row_number() - 1) %/% page_size) + 1
          ) 
 
@@ -230,7 +234,7 @@ qrp_assemled <-
          )
  
 # Create a function to apply formatting to all subtables 
-format_table <- function(df){
+format_qrp_table <- function(df){
   gt(df) |> 
     opt_row_striping(row_striping = TRUE) |> 
     opt_table_lines(extent = "none") |> 
@@ -238,6 +242,8 @@ format_table <- function(df){
                everything() ~ px(270)) |> 
     tab_options(column_labels.background.color = "#CCCCCC",
                 column_labels.font.weight = "bold",
+                column_labels.font.size = 11, 
+                table.font.size = 11,
                 row.striping.background_color = "#EEEEEE",
                 table.align = "left")
 }
@@ -246,8 +252,10 @@ format_table <- function(df){
 # Create the table
 qrp_table <- 
   pull(qrp_assemled, data) |> 
-  map(format_table) |> 
+  map(format_qrp_table) |> 
   gt_group(.list = _)
+
+qrp_table
 
 gtsave(qrp_table, "docs/qrp_table.html")
 
