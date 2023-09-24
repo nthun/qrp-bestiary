@@ -5,6 +5,7 @@ library(googlesheets4)
 library(tidytext)
 library(gt)
 library(janitor)
+library(venndir)
 
 theme_set(theme_light())
 
@@ -42,7 +43,7 @@ umbrella <-
   qrp |> 
   select(umbrella_terms, qrp) |> 
   separate_rows(umbrella_terms, sep = "\n") |> 
-  # mutate(umbrella_terms = if_else(umbrella_terms == "-", NA, umbrella_terms)) |> 
+  mutate(umbrella_terms = if_else(umbrella_terms == "-", "None", umbrella_terms)) |>
   group_by(umbrella_terms) |> 
   summarize(items = list(qrp))
 
@@ -50,36 +51,23 @@ umbrella |>
   pull(items) |> 
   set_names(umbrella$umbrella_terms)
 
-library(ggVennDiagram)
-
-umbrella |> 
-  pull(items) |> 
-  set_names(umbrella$umbrella_terms) |> 
-  ggvenn::ggvenn(show_elements = TRUE)
-
-library(venndir)
-
 umbrella |> 
   pull(items) |> 
   set_names(umbrella$umbrella_terms) |> 
   venndir(
-        poly_alpha=0.3,
-        # label_preset="main items",
-        show_items="item",
-        proportional=TRUE)
+        poly_alpha = 0.3,
+        label_preset = "main items",
+        show_items = "item",
+        proportional = TRUE)
 
-# As a table
-qrp |> 
-  select(umbrella_terms, qrp) |> 
-  separate_rows(umbrella_terms, sep = "\n") |> 
-  mutate(umbrella_terms = if_else(umbrella_terms == "-", NA, umbrella_terms)) |>  
-  group_by(umbrella_terms) |> 
-  arrange(umbrella_terms, qrp) |> 
-  mutate(qrp_order = row_number()) |> 
-  pivot_wider(names_from = umbrella_terms, values_from = qrp) |> 
-  select(-qrp_order) |>
+umbrella |> 
+  mutate(n = map_int(items, length),
+         items = map_chr(items, ~paste(sort(.x), collapse = ", "))) |> 
+  mutate(Description = "", .before = items) |> 
   gt() |> 
-  sub_missing(missing_text = "")
+  cols_label(umbrella_terms = "Umbrella term",
+             items = "QRPs") |> 
+  gtsave("docs/umbrella_terms.docx")
 
 
 # Contributors ------------------------------------------------------------
@@ -95,6 +83,20 @@ contributors_raw |>
 contributors_raw |> 
   count(position = `unified position`, sort = TRUE)
 
+credit_raw <- range_read("1Wap7eVD8Y1atM4fbHAkyw7pXOVCG-uobPPoouU5KNIs")
+
+credit <- 
+  credit_raw |> 
+  drop_na(Surname) |> 
+  mutate(`Middle name` = if_else(is.na(`Middle name`), "", `Middle name`))
+
+paste0(credit$Surname, 
+       ", ",
+       credit$Firstname,
+       # " ",
+       credit$`Middle name`
+       ) |> 
+  paste(collapse = "; ")
 
 # Damages -----------------------------------------------------------------
 min_damage_n = 3
