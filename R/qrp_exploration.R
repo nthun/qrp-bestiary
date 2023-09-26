@@ -212,18 +212,19 @@ page_size = 5
 
 qrp_long <-   
   qrp |> 
+  # To create a paged wide layout, define the number of columns on the page
+  mutate(page = ((row_number() - 1) %/% page_size) + 1) |> 
+  arrange(page, phase_order, qrp) |> 
   mutate(clues = if_else(clues == "-", "None  \n", clues),
          aliases = if_else(is.na(aliases), "-  \n", aliases),
          umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
          `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- "),
-         qrp = fct_inorder(qrp),
-         # To create a paged wide layout, define the number of columns on the page
-         page = ((row_number() - 1) %/% page_size) + 1
-         ) 
+         qrp = fct_inorder(qrp)
+         )
 
 # Create a broken up table and reassemble to be able to print properly
 
-qrp_assemled <-
+qrp_assembled <-
   qrp_long |> 
   select(qrp, `Alias(es) & related concepts` = aliases, Definition = definition, `Umbrella term(s)` = umbrella_terms, `Research phase` = research_phase, `Example(s)`, `Potential damages` = damage, Remedies = remedy, Detectability = detectability, Clues = clues, Sources = `source(s)`, page) |> 
   group_by(page) |> 
@@ -253,12 +254,14 @@ format_qrp_table <- function(df){
 
 # Create the table
 qrp_table <- 
-  pull(qrp_assemled, data) |> 
+  pull(qrp_assembled, data) |> 
   map(format_qrp_table) |> 
   gt_group(.list = _)
 
 qrp_table
 
+# gtsave doesn't work, export printed view as html manually!
 gtsave(qrp_table, "docs/qrp_table.html")
+
 
 
