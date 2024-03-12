@@ -25,7 +25,7 @@ latan <- c(472, 49.15, 57.63, 43.43, NA, 59.32, 42.80, NA, NA, 37.29, 22.67, 20.
 garciagarzon <- c(131, 24.6, 53.8, 27.7, NA, 20.0, 27.7, NA, NA, 43.1, 13.8, 13.8, 0) #Involved
 brachem <- c(1397, 15.2, 36.4, 17, 25.5, 11.4, 22.4, NA, NA, 12.3, 3.4, NA, 0)
 
-labels <- c("n", "Selectively reporting what 'worked'\n", "Selectively reporting\n outcomes", "Failing to report all conditions\n", "Selectively reporting performed \nanalyses", "Optional stopping", "Exclude data depending on impact on \nresults", "Selectively including covariates\n", "Switch analysis selectively\n", "HARKing", "Opportunistically rounding p-values\n", "Hiding demographic moderators\n", "Falsifying data")
+labels <- c("n", "Selectively reporting what 'worked'", "Selectively reporting outcomes", "Failing to report all conditions", "Selectively reporting performed analyses", "Optional stopping", "Exclude data depending on impact on results", "Selectively including covariates", "Switch analysis selectively", "HARKing", "Opportunistically rounding p-values", "Hiding demographic moderators", "Falsifying data")
 
 qrp_review <- tibble(labels, john, agnoli, motyl, rabelo, fraser_eco, fraser_evo, makel, bakker, chin, fiedler, moran, swift, latan, garciagarzon, brachem)
 
@@ -51,7 +51,7 @@ qrp_rev_ma <-
 qrp_meta_res <- 
   qrp_rev_ma %>%
   # Calculate pooled effect size (weighted mean of transformed values)
-  mutate(meta = map(data, ~rma(yi = yi, vi = vi, ni = n, method = "EE", data = .x)),
+  mutate(meta = map(data, ~rma(yi = yi, vi = vi, ni = n, method = "REML", data = .x)),
          pred = map(meta, ~predict(.x, transf = transf.iarcsin) |> 
                 as_tibble()),
          k = map_int(data, nrow),
@@ -63,16 +63,44 @@ qrp_meta_res <-
 
 # A meta-analysis pooled effect sizes
 qrp_meta_res |> 
-  mutate(labels = paste0(labels, "; k = ", k, ", N = ", n_sum),
+  mutate(labels = paste0(labels, "\n k = ", k, ", N = ", n_sum),
          labels = fct_reorder(labels, pred, .na_rm = TRUE)) |> 
   ggplot() +
   aes(x = pred, y = labels, xmin = ci.lb, xmax = ci.ub) +
-  geom_point() +
+  geom_point(aes(size = n_sum)) +
   geom_errorbar(width = .25) +
   scale_x_continuous(labels = scales::percent_format(), limits = c(0, 1)) +
+  scale_size_continuous(trans = "log10", range = c(2,5)) +
   scale_fill_viridis_d() +
   labs(y = NULL, title = "Pooled effect sizes (proportions) of QRP prevalence rates",
+       size = "Pooled participants",
+       x = "Pooled prevalance",
        caption  =" k: Number of studies, N: Total number of participants")
+  
+
+
+# Alternate method using the meta package -----------------------------------------------------
+
+qrp_meta_alt <- 
+  qrp_rev_ma %>%
+  # Calculate pooled effect size (weighted mean of transformed values)
+  mutate(metamodel = map(data, ~meta::metaprop(event = x, n = n, sm = "PAS", backtransf = TRUE, 
+                                               data = .x)),
+         k = map_int(data, nrow),
+         n_sum = map_int(data, ~summarise(.x, sum(n)) |> 
+                           pull())
+  ) |> 
+  ungroup()
+
+library(meta)
+
+qrp_meta_alt |> 
+  slice(1) |> 
+  pull(metamodel) |> 
+  print.meta()
+  str()
+
+
 
 
 # A Box plot of observed proportions (obsolete)
@@ -86,4 +114,4 @@ qrp_rev_long |>
   scale_fill_viridis_d() +
   labs(y = NULL)
 
-
+meta::metaprop()
