@@ -5,7 +5,6 @@ library(googlesheets4)
 library(tidytext)
 library(gt)
 library(janitor)
-library(venndir)
 
 theme_set(theme_light())
 
@@ -51,14 +50,6 @@ umbrella |>
   pull(items) |> 
   set_names(umbrella$umbrella_terms)
 
-umbrella |> 
-  pull(items) |> 
-  set_names(umbrella$umbrella_terms) |> 
-  venndir(
-        poly_alpha = 0.3,
-        label_preset = "main items",
-        show_items = "item",
-        proportional = TRUE)
 
 umbrella |> 
   mutate(n = map_int(items, length),
@@ -66,8 +57,8 @@ umbrella |>
   mutate(Description = "", .before = items) |> 
   gt() |> 
   cols_label(umbrella_terms = "Umbrella term",
-             items = "QRPs") |> 
-  gtsave("docs/umbrella_terms.docx")
+             items = "QRPs") # |> 
+  # gtsave("docs/umbrella_terms.docx")
 
 
 # Contributors ------------------------------------------------------------
@@ -98,7 +89,7 @@ paste0(credit$Surname,
        ) |> 
   paste(collapse = "; ")
 
-# Damages -----------------------------------------------------------------
+# Harms -----------------------------------------------------------------
 min_damage_n = 3
 
 qrp |> 
@@ -106,12 +97,12 @@ qrp |>
   separate_rows(damage_aggregated, sep = "- |\n") |> 
   filter(!damage_aggregated %in% c("", "-", NA)) |> 
   count(damage_aggregated, sort = TRUE) |> 
-  filter(n <= 3) |> 
+  filter(n > 3) |> 
   print(n = 100) 
 
-# Create a table, with aggregated damages
+# Create a table, with aggregated harms
 qrp |> 
-  select(qrp, damage = damage_aggregated) |> 
+  select(qrp, research_phase, damage = damage_aggregated) |> 
   separate_rows(damage, sep = "\n|\r\n") |> 
   mutate(damage = str_remove(damage, "- ") |> str_squish(),
          value = "X",
@@ -120,8 +111,24 @@ qrp |>
               values_from = value, 
               values_fn = first,
               values_fill = "") |> 
+  select(-`NA`) %>%
+  select(names(.) |> sort()) |> 
+  relocate(qrp) |> 
   relocate(-`Other damage`) |> 
-  gt()
+  group_by(research_phase) |> 
+  arrange(qrp, .by_group = TRUE) |> 
+  gt() |> 
+  cols_label(`Other damage` = "Other specific damage",
+             qrp = "QRP") |> 
+  tab_options(
+              # column_labels.background.color = "#CCCCCC",
+              column_labels.font.size = 12, 
+              table.font.size = 12,
+              column_labels.font.weight = "bold", 
+              row_group.background.color = "#EEEEEE", 
+              data_row.padding = 0, row_group.padding = 0,
+              row_group.font.weight = "bold",
+              table.align = "left")
 
 # List other damages
 
@@ -130,7 +137,7 @@ qrp |>
   transmute(
             damage = str_remove(damage_aggregated, "- ") |> str_squish(),
             damage_other = fct_lump_min(damage, min = min_damage_n, other_level = "Other damage")) |> 
-  filter(damage_other == "Other damage") |> 
+  filter(damage_other == "Other damage", damage != "") |> 
   count(damage, sort = TRUE)
 
 
@@ -212,18 +219,19 @@ page_size = 5
 
 qrp_long <-   
   qrp |> 
+  # To create a paged wide layout, define the number of columns on the page
+  mutate(page = ((row_number() - 1) %/% page_size) + 1) |> 
+  arrange(page, phase_order, qrp) |> 
   mutate(clues = if_else(clues == "-", "None  \n", clues),
          aliases = if_else(is.na(aliases), "-  \n", aliases),
          umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
          `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- "),
-         qrp = fct_inorder(qrp),
-         # To create a paged wide layout, define the number of columns on the page
-         page = ((row_number() - 1) %/% page_size) + 1
-         ) 
+         qrp = fct_inorder(qrp)
+         )
 
 # Create a broken up table and reassemble to be able to print properly
 
-qrp_assemled <-
+qrp_assembled <-
   qrp_long |> 
   select(qrp, `Alias(es) & related concepts` = aliases, Definition = definition, `Umbrella term(s)` = umbrella_terms, `Research phase` = research_phase, `Example(s)`, `Potential damages` = damage, Remedies = remedy, Detectability = detectability, Clues = clues, Sources = `source(s)`, page) |> 
   group_by(page) |> 
@@ -253,12 +261,14 @@ format_qrp_table <- function(df){
 
 # Create the table
 qrp_table <- 
-  pull(qrp_assemled, data) |> 
+  pull(qrp_assembled, data) |> 
   map(format_qrp_table) |> 
   gt_group(.list = _)
 
 qrp_table
 
+# gtsave doesn't work, export printed view as html manually!
 gtsave(qrp_table, "docs/qrp_table.html")
+
 
 
