@@ -137,8 +137,20 @@ qrp |>
   transmute(
             damage = str_remove(damage_aggregated, "- ") |> str_squish(),
             damage_other = fct_lump_min(damage, min = min_damage_n, other_level = "Other damage")) |> 
-  filter(damage_other == "Other damage", damage != "") |> 
+  filter(damage_other == "Other damage") |> 
   count(damage, sort = TRUE)
+
+
+# List inflated confidence damages ------------------------------------------------------------
+qrp |> 
+  filter(str_detect(damage_aggregated, "confidence|credibility")) |> 
+  separate_rows(damage, sep = "\n|\r\n") |> 
+  transmute(
+    damage = str_remove(damage, "- ") |> str_squish()
+    ) |> 
+  filter(str_detect(damage, "confidence|credibility")) |>
+  count(damage, sort = TRUE)
+
 
 
 # Remedies -----------------------------------------------------------------
@@ -153,6 +165,27 @@ qrp |>
 
 qrp |> 
   count(detectability)
+
+# Detectability table
+detectability <- 
+  qrp |> 
+  select(qrp, detectability) |> 
+  group_by(detectability) |> 
+  summarize(items = list(qrp))
+
+detectability |> 
+  pull(items) |> 
+  set_names(detectability$detectability)
+
+detectability |> 
+  mutate(n = map_int(items, length),
+         items = map_chr(items, ~paste(sort(.x), collapse = ", ")),
+         detectability = fct_relevel(detectability, c("Yes", "Maybe", "No"))) |> 
+  arrange(detectability) |> 
+  gt() |> 
+  cols_label(detectability = "Detectability",
+             items = "QRPs") |> 
+  gtsave("docs/detectability_table.docx")
 
 
 # Clues -------------------------------------------------------------------
@@ -193,7 +226,7 @@ qrp_text <-
   mutate(clues = if_else(clues == "-", "None  \n", clues),
          aliases = if_else(is.na(aliases), "-  \n", aliases),
          umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
-         `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- ")) |> 
+         `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "* ")) |> 
   select(-phase_order, -qrp_order) |> 
   mutate(qrp = fct_inorder(qrp),
          qrp_id = row_number()) |> 
@@ -246,6 +279,7 @@ qrp_assembled <-
 # Create a function to apply formatting to all subtables 
 format_qrp_table <- function(df){
   gt(df) |> 
+    fmt_markdown() |> 
     opt_row_striping(row_striping = TRUE) |> 
     opt_table_lines(extent = "none") |> 
     cols_width(starts_with("Attribute") ~ px(120),
@@ -267,7 +301,7 @@ qrp_table <-
 
 qrp_table
 
-# gtsave doesn't work, export printed view as html manually!
+# if gtsave doesn't work, export printed view as html manually!
 gtsave(qrp_table, "docs/qrp_table.html")
 
 

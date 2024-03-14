@@ -21,16 +21,15 @@ None
 
 _Examples_  
 
-(1)     Researcher is using similar items in two seemingly different constructs and concludes that the constructs have a high correlation.
-(2)     Researcher finds a positive relationship between depression and suicidality, but the positive relation is in part due to the depression scale already containing items about suicide.
-(3)     A researcher estimates a positive relation between construct A and construct B in a meta-analysis, but the meta-analysis includes studies that have used the same task to operationalize either construct.  
+(1) Researcher is using similar items in two seemingly different constructs and concludes that the constructs have a high correlation.
+(2) Researcher finds a positive relationship between depression and suicidality, but the positive relation is in part due to the depression scale already containing items about suicide.
+(3) A researcher estimates a positive relation between construct A and construct B in a meta-analysis, but the meta-analysis includes studies that have used the same task to operationalize either construct.  
 
 _Potential damages_  
 
 - Inflated type I or type II error
 - Inflated effect size estimates
-- Reduced replicability
-- Misleading conclusions    
+- Reduced replicability    
 
 _Remedies_  
 
@@ -67,19 +66,18 @@ None
 
 _Examples_  
 
-(1) A researcher chooses a large sample size to get negative results in a study about the harmful effects of smoking.
+(1) A researcher chooses a small sample size to get null results in a study about the harmful effects of smoking.
 (2) A researcher uses default parameters for the power analysis to show that power analysis had been performed, however, the analysis is uninformative.  
 
 _Potential damages_  
 
-- Inflated type type II error
+- Inflated type II error
 - Reduced replicability
-- Misleading conclusions
-- Inflated credibility of the study    
+- Inflated confidence in the research    
 
 _Remedies_  
 
-- Being transparent about how power analysis was conducted
+- Be transparent about how power analysis was conducted
 - Use meaningful parameters that are based on field standards, literature, or common sense    
 
 _Detectability_  
@@ -91,38 +89,38 @@ _Clues to detect_
 - Relatively low sample size
 - Details of power analysis not reported or justified
 - Parameters of the power analysis are generic and do not fit the study
-- The results of power analysis are misinterpreted
-- Negative results are reported in a controversial field where others find positive results  
+- The results of power analysis are misinterpreted  
 
 
 ---
 
-**PARKing**  
+**PARKing (preregistering after results are known)**  
 
 _Definition_    
 
-Pre-registering a hypothesis or analysis after knowing the outcome of the analysis.  
+Preregistering a hypothesis or analysis after knowing the outcome of the analysis.  
 
 _Alias(es) and related concepts_
 
-"Pre-registering after the results are known"  
+-  
+  
 
 _Umbrella term(s)_
 
-Faking open science  
+Misusing open science practices  
 
 _Examples_  
 
-(1) Researcher realizes that their paper won't be accepted without a pre-registration, so they create one post-hoc and link it to their study.  
+(1) Researcher realizes that their paper won't be accepted without a preregistration, so they create one post-hoc and link it to their study.  
 
 _Potential damages_  
 
-- Inflated credibility of the study    
+- Inflated confidence in the research    
 
 _Remedies_  
 
-- Pre-register before analyzing the data
-- Being transparent about when the pre-registration was done
+- Preregister before analyzing the data
+- Be transparent about when the preregistration was done
 - Disclose the familiarity (if any) of the researcher with the data    
 
 _Detectability_  
@@ -131,68 +129,17 @@ Yes
 
 _Clues to detect_  
 
-- Data collection occurred previous to the pre-registration date
-- Date of pre-registration is unrealistically close to the first submission without the paper being a registered report  
+- Data collection occurred previous to the preregistration date
+- Date of preregistration is unrealistically close to the first submission without the paper being a registered report  
 
 
 ---
 
-**Selective sampling**  
+**Using biased manipulations**  
 
 _Definition_    
 
-Collecting data in a way that biases the findings.  
-
-_Alias(es) and related concepts_
-
-Purposive sampling  
-
-_Umbrella term(s)_
-
-None  
-  
-
-_Examples_  
-
-(1)     Researcher tests the likeability of chocolate on a group of children only in order to find that everyone loves it.
-(2)     Using uncomparable groups: The researcher tests if men are more aggressive than women. For comparison, women from a university are compared with men from a prison.
-(3)     Picking a subsample of a panel dataset to find the desired results.  
-
-_Potential damages_  
-
-- Inflated type I or type II error
-- Inflated or deflated effect size estimates
-- Misleading conclusions
-- Reduced generalizability
-- Reduced replicability if sampling bias is not disclosed    
-
-_Remedies_  
-
-- Use a sampling method that doesn't bias the results
-- Make sure that the sample represents the population
-- Use comparable (or matched) groups
-- Report the sampling process transparently
-- Consider using statistical control for confounding variables
-- Pre-register the sampling process    
-
-_Detectability_  
-
-Yes
-
-_Clues to detect_  
-
-- Unclear rationale for sample selection
-- Compared groups are from different populations
-- Convenience sample  
-
-
----
-
-**Grooming participants**  
-
-_Definition_    
-
-Affect participants to make them give responses that support the desired narrative.  
+Using an unjustified manipulation to reach a misleading outcome.  
 
 _Alias(es) and related concepts_
 
@@ -205,33 +152,31 @@ Influencing participants
 
 _Examples_  
 
-(1)     Researcher tells the participants that he believes the treatment will work.
-(2)     Researcher uses a briefing document that is trying to influence participants’ attitudes about the topic that is assessed in the study.
-(3)     During data collection the same organization that runs the study also runs a marketing campaign to influence public opinion on the same topic.  
+(1) Selecting sub-clinical drug doses to suggest no effect or only deliberately high does to suggest an adverse effect. 
+(2) Using images or videos to elicit emotions, but the stimuli are not eliciting emotions.  
 
 _Potential damages_  
 
 - Inflated type I or type II error
 - Inflated or deflated effect size estimates
-- Misleading conclusions
-- Reduced replicability    
+- Reduced generalizability    
 
 _Remedies_  
 
-- Blind the experimenter where possible
-- As a researcher interacting with participants, remain neutral and follow scripts during testing
-- Use automated research procedures (e.g. research presentation software) instead of human research assistants wherever possible
-- Avoid exposing participants to any cues that might influence their responses    
+- Run pilot studies to investigate if the manipulation can elicit an effect
+- Use manipulation check questions
+- Use standard stimuli or dosages    
 
 _Detectability_  
 
-No
+Maybe
 
 _Clues to detect_  
 
-- Absence of blinding
-- Absence of procedure scripts
-- Suggestive questions in the survey  
+- Using stimuli that were not previously tested and/or have no proven effect
+- Using stimuli that can elicit extreme responses
+- Using dosages outside of recommended values
+- Lack of manipulation check  
 
 
 ---
@@ -254,13 +199,13 @@ Influencing participants
 _Examples_  
 
 (1) Researcher uses loaded, leading, or suggestive questions, e.g., "Does the lack of respect schoolchildren have for their teachers, in your opinion, influence everyday teaching methods in schools?"
-(2) Researcher assesses a psychological construct using an ad hoc questionnaire with no proven validity.  
+(2) Researcher assesses a psychological construct using an ad hoc questionnaire with no proven validity.
+(3) Researcher uses a scale that do not capture the intended construct properly in order to support a desired narrative  
 
 _Potential damages_  
 
 - Inflated type I or type II error 
 - Inflated or deflated effect size estimates 
-- Misleading conclusions 
 - Reduced replicability    
 
 _Remedies_  
@@ -283,6 +228,55 @@ _Clues to detect_
 
 ---
 
+**Selective sampling**  
+
+_Definition_    
+
+Choosing a sample in a way that biases the findings.  
+
+_Alias(es) and related concepts_
+
+Biased sampling  
+
+_Umbrella term(s)_
+
+Sample curation  
+
+_Examples_  
+
+(1)     Researcher tests the likeability of chocolate on a group of children only in order to find that everyone loves it.
+(2)     Using uncomparable groups: The researcher tests if men are more aggressive than women. For comparison, women from a university are compared with men from a prison.
+(3)     Picking a subsample of a panel dataset to find the desired results.  
+
+_Potential damages_  
+
+- Inflated type I or type II error
+- Inflated or deflated effect size estimates
+- Reduced generalizability
+- Reduced replicability if sampling bias is not disclosed    
+
+_Remedies_  
+
+- Use a sampling method that doesn't bias the results
+- Make sure that the sample represents the population
+- Use comparable (or matched) groups
+- Report the sampling process transparently
+- Consider using statistical control for confounding variables
+- Preregister the sampling process    
+
+_Detectability_  
+
+Yes
+
+_Clues to detect_  
+
+- Unclear rationale for sample selection
+- Compared groups are from different populations
+- Convenience sample  
+
+
+---
+
 **Optional stopping**  
 
 _Definition_    
@@ -296,8 +290,7 @@ Data peeking
 
 _Umbrella term(s)_
 
-None  
-  
+Sample curation  
 
 _Examples_  
 
@@ -306,13 +299,12 @@ _Examples_
 _Potential damages_  
 
 - Inflated type I error
-- Reduced replicability
-- Misleading conclusions    
+- Reduced replicability    
 
 _Remedies_  
 
-- Pre-register the estimated sample size
-- Pre-register stopping rules and adjustments for type I error-inflation    
+- Preregister the estimated sample size
+- Preregister stopping rules and adjustments for type I error-inflation    
 
 _Detectability_  
 
@@ -322,7 +314,7 @@ _Clues to detect_
 
 - Vague or absent reason for sample size
 - Low sample size
-- Absence of pre-registration
+- Absence of preregistration
 - P-values are just below the significance threshold (usually 0.05)
 - Relatively large effect size compared to other studies in the field  
 
@@ -341,8 +333,7 @@ Double dipping
 
 _Umbrella term(s)_
 
-None  
-  
+Sample curation  
 
 _Examples_  
 
@@ -352,13 +343,58 @@ _Potential damages_
 
 - Inflated type I or type II error
 - Reduced replicability
-- Inflated or deflated effect size estimates
-- Misleading conclusions    
+- Inflated or deflated effect size estimates    
 
 _Remedies_  
 
-- Don't include pilot data in the final data set
-- If for resource reasons you need to include pilot data report pilot data separately    
+- Don't include pilot data in the analyzed dataset
+- Report pilot data separately    
+
+_Detectability_  
+
+Maybe
+
+_Clues to detect_  
+
+- If data is shared, timestamps may fall into two distinct periods
+- Sample sizes reported throughout the paper might not match  
+
+
+---
+
+**Grooming participants**  
+
+_Definition_    
+
+Affecting participants to make them give responses that support the desired narrative.  
+
+_Alias(es) and related concepts_
+
+-  
+  
+
+_Umbrella term(s)_
+
+Influencing participants  
+
+_Examples_  
+
+(1)     Researcher tells the participants that he believes the treatment will work.
+(2)     Researcher uses a briefing document that is trying to influence participants’ attitudes about the topic that is assessed in the study.
+(3)     During data collection the same organization that runs the study also runs a marketing campaign to influence public opinion on the same topic.  
+
+_Potential damages_  
+
+- Inflated type I or type II error
+- Inflated or deflated effect size estimates
+- Reduced replicability    
+
+_Remedies_  
+
+- Blind the experimenter where possible
+- As a researcher interacting with participants, remain neutral and follow scripts during testing
+- Use automated research procedures (e.g. research presentation software) instead of human research assistants wherever possible
+- Avoid exposing participants to any cues that might influence their responses    
 
 _Detectability_  
 
@@ -366,8 +402,9 @@ No
 
 _Clues to detect_  
 
-None  
-  
+- Absence of blinding
+- Absence of procedure scripts
+- Suggestive questions in the survey  
 
 
 ---
@@ -395,13 +432,13 @@ _Potential damages_
 
 - Inflated type I or type II error
 - Inflated or deflated effect size estimates
-- Misleading conclusions
 - Reduced reproducibility
 - Reduced replicability    
 
 _Remedies_  
 
-- Pre-registration of missing data approach
+- Preregister missing data approach
+- Perform blinded data analysis
 - Perform sensitivity analysis    
 
 _Detectability_  
@@ -431,7 +468,8 @@ _Alias(es) and related concepts_
 
 _Umbrella term(s)_
 
-P-hacking  
+P-hacking
+Sample curation  
 
 _Examples_  
 
@@ -444,14 +482,14 @@ _Potential damages_
 - Reduced generalizability
 - Reduced replicability
 - Reduced reproducibility
-- Inflated or deflated effect size estimates
-- Misleading conclusions    
+- Inflated or deflated effect size estimates    
 
 _Remedies_  
 
-- Pre-registration
+- Preregister the study
 - Use valid reasons to exclude participants
 - Report post hoc changes in exclusion criteria
+- Perform blinded data analysis 
 - Perform sensitivity analysis    
 
 _Detectability_  
@@ -460,7 +498,7 @@ Maybe
 
 _Clues to detect_  
 
-- Absence of pre-registration
+- Absence of preregistration
 - Absence of open data
 - Unexplained discrepancy between the recruited and analyzed sample sizes
 - Sample too narrow for recruitment methods  
@@ -494,14 +532,14 @@ _Potential damages_
 - Reduced generalizability
 - Reduced replicability
 - Reduced reproducibility
-- Inflated or deflated effect size estimates
-- Misleading conclusions    
+- Inflated or deflated effect size estimates    
 
 _Remedies_  
 
-- Pre-registration
+- Preregister the study
 - Use valid reasons to exclude data points or outliers
 - Report post hoc changes in exclusion criteria
+- Perform blinded data analysis
 - Perform sensitivity analysis    
 
 _Detectability_  
@@ -510,7 +548,7 @@ Maybe
 
 _Clues to detect_  
 
-- Absence of pre-registration
+- Absence of preregistration
 - Absence of open data
 - Unexplained discrepancy between the recruited and analyzed sample sizes and degrees of freedom  
 
@@ -543,14 +581,14 @@ _Potential damages_
 - Inflated or deflated effect size estimates
 - Reduced replicability
 - Reduced reproducibility
-- Misleading conclusions
 - Reduced generalizability    
 
 _Remedies_  
 
-- Pre-registration
+- Preregister the study
 - Use valid reasons to define group membership
 - Report post hoc changes in grouping rules and report results using original grouping rules as well
+- Perform blinded data analysis
 - Perform sensitivity analysis    
 
 _Detectability_  
@@ -559,7 +597,7 @@ Maybe
 
 _Clues to detect_  
 
-- Absence of pre-registration
+- Absence of preregistration
 - Absence of open data
 - Response options in materials/methods different than reported groups
 - Oversimplified sample description  
@@ -591,14 +629,14 @@ _Potential damages_
 - Inflated type I or type II error
 - Inflated or deflated effect size estimates
 - Reduced replicability
-- Misleading conclusions
 - Reduced generalizability    
 
 _Remedies_  
 
-- Pre-registration
+- Preregister the study
 - Use original measurement levels
 - Discretize only with strong justification
+- Perform blinded data analysis
 - Perform sensitivity analysis    
 
 _Detectability_  
@@ -639,19 +677,18 @@ _Potential damages_
 
 - Reduced replicability
 - Reduced reproducibility
-- Reduced content validity of the measure
-- Reduced construct validity of the measure
+- Reduced validity of the measure
 - Inflated or deflated reliability of the measure
 - Inflated type I or type II error
-- Inflated or deflated effect size estimates
-- Misleading conclusions    
+- Inflated or deflated effect size estimates    
 
 _Remedies_  
 
 - Publish study materials
-- Pre-registration
+- Preregister the study
 - Use conventional measurements/measures
 - Describe and justify any modifications on measurements
+- Perform blinded data analysis
 - Perform sensitivity analysis    
 
 _Detectability_  
@@ -691,14 +728,13 @@ _Potential damages_
 - Reduced replicability
 - Reduced reproducibility
 - Inflated type I or type II error
-- Inflated or deflated effect size estimates
-- Misleading conclusions    
+- Inflated or deflated effect size estimates    
 
 _Remedies_  
 
-- Pre-register under which conditions transformations will be performed
+- Preregister under which conditions transformations will be performed
 - Describe and justify any variable transformations
-- Blinded data analysis
+- Perform blinded data analysis
 - Perform sensitivity analysis    
 
 _Detectability_  
@@ -731,7 +767,7 @@ P-hacking
 
 _Examples_  
 
-(1) A researcher opportunistically decides which background variables (e.g., age, gender) to control for, without a causal theory or a pre-registration.
+(1) A researcher opportunistically decides which background variables (e.g., age, gender) to control for, without a causal theory or a preregistration.
 (2) A researcher decides whether to control for a baseline value in an experimental design depending on the results of statistical tests.
 (3) Researcher avoids the inclusion (or measurement) of theoretically justified moderators (e.g., severity of a condition, or socio-economic status) to be able to imply greater generalisability.  
 
@@ -741,15 +777,15 @@ _Potential damages_
 - Inflated or deflated effect size estimates
 - Reduced replicability
 - Reduced reproducibility
-- Misleading conclusions
 - Reduced generalizability    
 
 _Remedies_  
 
 - Provide reasonable arguments for inclusion/ exclusion of covariates
-- Pre-register complete models/analytical plan
+- Preregister complete models/analytical plan
 - Report robustness checks
-- Follow clear guidelines    
+- Follow clear guidelines
+- Perform blinded data analysis    
 
 _Detectability_  
 
@@ -784,13 +820,13 @@ A researcher decides (1) whether or not to adjust for multiple tests (e.g., in a
 
 _Potential damages_  
 
-- Inflated type I or type II error
-- Misleading conclusions    
+- Inflated type I or type II error    
 
 _Remedies_  
 
-- Pre-register p-value adjustment plans
-- Pre-register planned contrasts
+- Preregister p-value adjustment plans
+- Preregister planned contrasts
+- Perform blinded data analysis
 - Perform sensitivity analysis    
 
 _Detectability_  
@@ -829,14 +865,14 @@ _Examples_
 _Potential damages_  
 
 - Inflated type I or type II error
-- Inaccurate predictions
-- Misleading conclusions    
+- Inflated or deflated effect size estimates    
 
 _Remedies_  
 
 - Use a theoretically justified model in confirmatory studies
 - Underfitting: Visualize data and the model
 - Use methods that prevent overfitting in exploratory research, e.g. use separate train and test datasets, use cross-validation resampling methods, use regularization or other feature selection methods
+- Perform blinded data analysis
 - Perform sensitivity analysis    
 
 _Detectability_  
@@ -879,8 +915,7 @@ _Potential damages_
 
 - Inflated type I or type II error
 - Reduced replicability
-- Reduced reproducibility
-- Misleading conclusions    
+- Reduced reproducibility    
 
 _Remedies_  
 
@@ -921,13 +956,13 @@ _Potential damages_
 - Inflated type I or type II error
 - Inflated or deflated effect size estimates
 - Reduced replicability
-- Reduced reproducibility
-- Misleading conclusions    
+- Reduced reproducibility    
 
 _Remedies_  
 
 - Only report significance if the results are robust across random seeds
-- Use a large number of replications (e.g. bootstrap  samples)    
+- Use a large number of replications (e.g. bootstrap  samples)
+- Perform blinded data analysis    
 
 _Detectability_  
 
@@ -958,19 +993,19 @@ Cherry-picking
 
 _Examples_  
 
-(1) Researcher analyzes the data using (1) multiple statistical methods (multiple t-tests, ANOVAs, different random structures in LMEMs) and/ or (2) multiple data eligibility specifications. Based on the results, they choose to present only one analysis that gives a significant result.  
+Researcher analyzes the data using (1) multiple statistical methods (multiple t-tests, ANOVAs, different random structures in LMEMs) and/ or (2) multiple data eligibility specifications. Based on the results, they choose to present only one analysis that gives a significant result.  
 
 _Potential damages_  
 
 - Inflated type I or type II error
-- Misleading conclusions
 - Reduced reproducibility
-- Reduced replicability    
+- Reduced replicability
+- Inflated confidence in the research    
 
 _Remedies_  
 
-- Pre-register data processing (e.g. missing data approach) and statistical analysis strategy
-- Blinded data analysis
+- Preregister data processing (e.g. missing data approach) and statistical analysis strategy
+- Perform blinded data analysis
 - Use simulated data to plan analysis (write code)
 - Perform specificity curve analysis    
 
@@ -980,9 +1015,386 @@ Maybe
 
 _Clues to detect_  
 
-- Absence of pre-registration
+- Absence of preregistration
 - Arbitrary data processing steps and/or statistical methods
 - P-values just below the significance threshold (usually 0.05)  
+
+
+---
+
+**Making unsupported conclusions**  
+
+_Definition_    
+
+Interpreting research findings or their implications in a way that is not backed by evidence.  
+
+_Alias(es) and related concepts_
+
+-  
+  
+
+_Umbrella term(s)_
+
+None  
+  
+
+_Examples_  
+
+(1) Researcher concludes that a treatment is effective for groups and contexts that were not considered in the study. 
+(2) Researcher concludes that a treatment worked, however, the treatment effect did not differ from the effect of the control condition (or no control condition was used). 
+(3) Researcher implies causality based on a research design or that does not allow causal inference.  
+
+_Potential damages_  
+
+NA    
+
+_Remedies_  
+
+- Make sure that every interpretation is properly supported by evidence 
+- Make clear that the evidence is limited to certain contexts
+- Use conditional statements where evidence is weak or the researcher uses extrapolation    
+
+_Detectability_  
+
+Yes
+
+_Clues to detect_  
+
+- The chosen methodology and statistical analysis do not allow to answer the hypothesis
+- The statistical results do not match the conclusions
+- Causal claims are made without the methodology or analysis allowing causal inference
+- Results are generalized to contexts outside of the study's scope  
+
+
+---
+
+**HARKing (hypothesizing after the results are known)**  
+
+_Definition_    
+
+Presenting a hypothesis that is based on observed results (post-hoc or a posteriori) as if it was presumed before obtaining results (a priori).  
+
+_Alias(es) and related concepts_
+
+Texas sharpshooter fallacy, 
+Post hoc ergo propter hoc  
+
+_Umbrella term(s)_
+
+None  
+  
+
+_Examples_  
+
+(1) Researcher claims to have predicted an unexpected result. 
+(2) Researcher has no hypotheses originally and forms hypotheses after exploring the data and presenting the hypotheses as they had those from the beginning.
+(3) Researcher has a hypothesis (e.g., a mediation hypothesis) and tests it, and if the results do not confirm the hypothesis but rather indicate an alternative pattern (e.g., a moderation), the researcher claims that this is what they hypothesized all along.
+(4) Post-hoc directional hypotheses: The researcher presents a hypothesis as if it was uni-directional (i.e. group A’s mean is larger than group B’s, or a correlation will be positive), although the original hypothesis was bi-directional. This change will make the hypothesis test significant.  
+
+_Potential damages_  
+
+- Reduced replicability
+- Inflated type I or type II error
+- Inflated or deflated effect size estimates
+- Inflated confidence in the research    
+
+_Remedies_  
+
+- Formulate hypotheses before analyzing the data
+- Preregister confirmatory hypotheses
+- Clearly separate exploratory and confirmatory findings
+- Use robust exploratory research practices (e.g. holdout dataset, cross-validation, multiverse analysis, blinded data analysis, etc.)
+- Perform blinded data analysis    
+
+_Detectability_  
+
+Maybe
+
+_Clues to detect_  
+
+- Absence of preregistration
+- Unexplained and unconventional choices in the methods and results section  
+
+
+---
+
+**Incorrect reporting of test statistics**  
+
+_Definition_    
+
+Not using statistical test reporting conventions to obscure exact results and assume that they are above or below threshold values.  
+
+_Alias(es) and related concepts_
+
+-  
+  
+
+_Umbrella term(s)_
+
+None  
+  
+
+_Examples_  
+
+(1)     Researcher is ‘rounding off’ a p-value in a paper (e.g., reporting that a p-value of .054 is less or equal to .05).
+(2)     Researcher reports p-values only and conceals test statistics.
+(3)     Researcher reports a correlation without disclosing the degrees of freedom, number of observations, or confidence interval, so it seems like the effect is large (for example r=.70, n=15, CI=[.01; .90]).
+(4)     Researcher does a model comparison and only reports fit statistics that are in favor of the preferred model.  
+
+_Potential damages_  
+
+- Inflated type I or type II error
+- Reduced reproducibility    
+
+_Remedies_  
+
+- Adhere to reporting conventions (e.g., APA)
+- Use literate programming (e.g., RMarkdown, quarto, jupyter)
+- Work with software that supports you in producing and checking your write-up (e.g., papaja, stat-check)
+- Publish data
+- Publish processing and analysis code    
+
+_Detectability_  
+
+Yes
+
+_Clues to detect_  
+
+- Statistics are not reported according to conventions (e.g., three digits for p-values, reporting of df)
+- Fit statistics are missing without proper explanation
+- Anomalies in reported statistics, e.g., test statistics are incompatible with p-values
+- Absence of open data
+- Absence of open code  
+
+
+---
+
+**Visualizing data in a misleading way**  
+
+_Definition_    
+
+Choosing suboptimal visualizations or altering figure properties in order to exaggerate or diminish effects.  
+
+_Alias(es) and related concepts_
+
+-  
+  
+
+_Umbrella term(s)_
+
+None  
+  
+
+_Examples_  
+
+(1)     Researcher truncates the y-axis so it is not starting at zero and/or does not add error bars. This makes differences seem larger and more significant than they are in reality.
+(2)     Researcher uses arbitrary categories to present interval data on a map.
+(3)     Researcher displays a pie chart with percentage numbers falling below or exceeding 100.  
+
+_Potential damages_  
+
+NA    
+
+_Remedies_  
+
+- Follow best practices on how to visualize data    
+
+_Detectability_  
+
+Yes
+
+_Clues to detect_  
+
+- Visualization does not match the reported results in the text
+- In a plot y-axis is starting at an arbitrary point
+- Statistical uncertainty (e.g., error bars) is not shown on plots
+- Only summary statistics are shown without individual data points
+- Scale or response options in text do not match how they are presented in a plot
+- Chartjunk (e.g., 3d elements, ornaments) is present on the plot  
+
+
+---
+
+**Selective reporting of hypotheses**  
+
+_Definition_    
+
+Reporting hypothesis test only if it fits the researcher's expectation.  
+
+_Alias(es) and related concepts_
+
+Cherry-picking hypotheses, 
+Chrysalis effect, 
+Fishing expedition  
+
+_Umbrella term(s)_
+
+Cherry-picking  
+
+_Examples_  
+
+Researcher formulates five hypotheses of which only three are supported by the data - only these 3 get reported in the final research report (Chrysalis effect).
+(2)     Fishing expedition - The researcher surveys college students about the outfit they are wearing and their scores on several tests which allows for many possible analyses (examining different colors, types of clothing, tests, score cutoffs, etc.). They end up reporting only a subset of findings to claim college students perform significantly better on tests when they are wearing green. See also Modifying measurement, Selective reporting of indicator variables, and Selective reporting of outcomes.  
+
+_Potential damages_  
+
+- Inflated confidence in the research
+- Inflated type I or type II error
+- Inflated or deflated effect size estimates    
+
+_Remedies_  
+
+- Report all hypotheses in the write-up regardless of whether they were confirmed or not 
+- If some hypotheses get left out due to the scope of the write-up be transparent about it
+- Preregister the study    
+
+_Detectability_  
+
+Maybe
+
+_Clues to detect_  
+
+- Number of hypotheses in preregistration (or dissertation) exceeds the number in the publication  
+
+
+---
+
+**Omitting important details of the scientific process**  
+
+_Definition_    
+
+Not reporting important details of the methodology and statistical analysis.  
+
+_Alias(es) and related concepts_
+
+Incomplete methods or results section  
+
+_Umbrella term(s)_
+
+Cherry-picking  
+
+_Examples_  
+
+(1) Researcher omits sample characteristics.
+(2) Researcher reports correlations without specifying the type, e.g., Spearman.
+(3) Researcher reports having conducted an online study and does not reveal it was an MTurk-study.
+(4) Researcher does not fully disclose compensation etc. for participants during data collection. 
+(5) Researcher does not share study materials on request.
+(6) Researcher does not report exact questionnaire items.  
+
+_Potential damages_  
+
+- Reduced replicability
+- Reduced reproducibility
+- Reduced generalizability    
+
+_Remedies_  
+
+- Report every important detail of the scientific process
+- Preregister the study or written research plan before conducting the study
+- Use a lab log during data collection to keep track of changes in the scientific process    
+
+_Detectability_  
+
+Maybe
+
+_Clues to detect_  
+
+- Details that are usually shared are missing
+- Replication is not possible from published methods
+- Absence of open study materials  
+
+
+---
+
+**Selective reporting of indicator variables**  
+
+_Definition_    
+
+Reporting only the indicator variables (or predictors, features, independent variables) that are used in analyses that produce expected results.  
+
+_Alias(es) and related concepts_
+
+Cherry-picking indicator variables, 
+Cherry-picking conditions/ groups  
+
+_Umbrella term(s)_
+
+Cherry-picking  
+
+_Examples_  
+
+(1) Researcher reports IVs that are associated with the outcome rather than including all measured IVs in the results section.
+(2) Researcher drops one or more conditions or groups/merges two or more groups into one / splits a group into more groups than were initially planned depending on statistical results.  
+
+_Potential damages_  
+
+- Inflated type I or type II error
+- Inflated or deflated effect size estimates
+- Reduced replicability
+- Reduced generalizability    
+
+_Remedies_  
+
+- Report all indicators
+- Preregister the study
+- Perform blinded data analysis    
+
+_Detectability_  
+
+Maybe
+
+_Clues to detect_  
+
+-  Number of preregistered indicators exceeds the number of indicators in publication
+- Reported mean time of participation does not match the number of reported measures
+- Measures get reported in the methods section but not in the results section
+- Indicators reported in Supplemental Material but not mentioned in main text  
+
+
+---
+
+**Selective reporting of outcomes**  
+
+_Definition_    
+
+Reporting only the outcomes (or dependent variables) that are used in analyses that produce expected results.  
+
+_Alias(es) and related concepts_
+
+Cherry-picking outcomes  
+
+_Umbrella term(s)_
+
+Cherry-picking  
+
+_Examples_  
+
+(1) Researcher uses several scales to measure the same construct but only reports the one that produces expected results.  
+
+_Potential damages_  
+
+- Inflated type I or type II error
+- Inflated or deflated effect size estimates
+- Reduced replicability
+- Reduced generalizability    
+
+_Remedies_  
+
+- Report all outcomes
+- Preregister the study
+- Perform blinded data analysis    
+
+_Detectability_  
+
+Maybe
+
+_Clues to detect_  
+
+- Number of preregistered outcomes exceeds number outcomes in publication
+- Reported mean time of participation does not match number of reported measures
+- Measures get reported in the methods section but not in the results section 
+- Outcomes reported in Supplemental Material but not mentioned in main text  
 
 
 ---
@@ -1010,8 +1422,7 @@ _Examples_
 _Potential damages_  
 
 - Inflated credibility of publications
-- Inflated credibility of journals
-- Misleading conclusions    
+- Inflated credibility of journals    
 
 _Remedies_  
 
@@ -1093,8 +1504,7 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated credibility of statements
-- Misleading conclusions    
+- Inflated credibility of statements    
 
 _Remedies_  
 
@@ -1107,194 +1517,6 @@ Yes
 _Clues to detect_  
 
 - Publications are cited without relevance to the claims  
-
-
----
-
-**Making unsupported conclusions**  
-
-_Definition_    
-
-Interpreting research findings or their implications in a way that is not backed by evidence.  
-
-_Alias(es) and related concepts_
-
--  
-  
-
-_Umbrella term(s)_
-
-None  
-  
-
-_Examples_  
-
-(1) Researcher concludes that a treatment is effective for groups and contexts that were not considered in the study. 
-(2) Researcher concludes that a treatment worked, however, the treatment effect did not differ from the effect of the control condition (or no control condition was used). 
-(3) Researcher implies causality based on a research design or that does not allow causal inference.  
-
-_Potential damages_  
-
-- Misleading conclusions    
-
-_Remedies_  
-
-- Make sure that every interpretation is properly supported by evidence 
-- Make clear that the evidence is limited to certain contexts
-- Use conditional statements where evidence is weak or the researcher uses extrapolation    
-
-_Detectability_  
-
-Yes
-
-_Clues to detect_  
-
-- The chosen methodology and statistical analysis do not allow to answer the hypothesis
-- The statistical results do not match the conclusions
-- Causal claims are made without the methodology or analysis allowing causal inference
-- Results are generalized to contexts outside of the study's scope  
-
-
----
-
-**Not disclosing deviations from pre-registration**  
-
-_Definition_    
-
-Deviating from the pre-registration without transparency and proper justification in the publication.  
-
-_Alias(es) and related concepts_
-
--  
-  
-
-_Umbrella term(s)_
-
-Faking open science  
-
-_Examples_  
-
-(1)     Researcher pre-registers that they would collect data from a non-student sample, but ends up including students, and does not disclose this deviation.
-(2)     Researcher pre-registers a data analysis using linear regression but used robust regression instead without reporting the discrepancy.
-(3)     See also Example 1 in Selective reporting of hypotheses.  
-
-_Potential damages_  
-
-- Reduced replicability
-- Potential HARKing
-- Inflated confidence in the research
-- Misleading conclusions    
-
-_Remedies_  
-
-- Disclose and justify every divergence from the pre-registration
-- Avoid vagueness in pre-registration
-- Use methods that will provide robust results even when pre-registration is not specific at points (e.g. blind data analysis, cross-validation)    
-
-_Detectability_  
-
-Yes
-
-_Clues to detect_  
-
-- Pre-registration and published study differ on important aspects
-- Link to the pre-registration in the manuscript does not work/ leads to a private OSF project  
-
-
----
-
-**HARKing**  
-
-_Definition_    
-
-Presenting a hypothesis that is based on observed results (post-hoc or a posteriori) as if it was presumed before obtaining results (a priori).  
-
-_Alias(es) and related concepts_
-
-"Hypothesizing after the results are known", 
-Texas sharpshooter fallacy, 
-Post hoc ergo propter hoc  
-
-_Umbrella term(s)_
-
-None  
-  
-
-_Examples_  
-
-(1) Researcher claims to have predicted an unexpected result. 
-(2) Researcher has no hypotheses originally and forms hypotheses after exploring the data and presenting the hypotheses as they had those from the beginning.
-(3) Researcher has a hypothesis (e.g., a mediation hypothesis) and tests it, and if the results do not confirm the hypothesis but rather indicate an alternative pattern (e.g., a moderation), the researcher claims that this is what they hypothesized all along.
-(4) Post-hoc directional hypotheses: The researcher presents a hypothesis as if it was uni-directional (i.e. group A’s mean is larger than group B’s, or a correlation will be positive), although the original hypothesis was bi-directional. This change will make the hypothesis test significant.  
-
-_Potential damages_  
-
-- Reduced replicability
-- Inflated type I or type II error
-- Inflated or deflated effect size estimates
-- Misleading conclusions    
-
-_Remedies_  
-
-- Formulate hypotheses before analyzing the data
-- Pre-registration of confirmatory studies
-- Clearly separate exploratory and confirmatory findings
-- Use robust exploratory research practices (e.g. holdout dataset, cross-validation, multiverse analysis, blinded data analysis, etc.)    
-
-_Detectability_  
-
-Maybe
-
-_Clues to detect_  
-
-- Absence of pre-registration
-- Unexplained and unconventional choices in the methods and results section  
-
-
----
-
-**Selective reporting of hypotheses**  
-
-_Definition_    
-
-Reporting hypothesis test only if it fits the researcher's expectation.  
-
-_Alias(es) and related concepts_
-
-Cherry-picking hypotheses, 
-Chrysalis effect, 
-Fishing expedition  
-
-_Umbrella term(s)_
-
-Cherry-picking  
-
-_Examples_  
-
-Researcher formulates five hypotheses of which only three are supported by the data - only these 3 get reported in the final research report (Chrysalis effect).
-(2)     Fishing expedition - The researcher surveys college students about the outfit they are wearing and their scores on several tests which allows for many possible analyses (examining different colors, types of clothing, tests, score cutoffs, etc.). They end up reporting only a subset of findings to claim college students perform significantly better on tests when they are wearing green. See also Modifying measurement, Selective reporting of indicator variables, and Selective reporting of outcomes.  
-
-_Potential damages_  
-
-- Potential HARKing
-- Inflated confidence in the research
-- Inflated type I or type II error
-- Inflated or deflated effect size estimates
-- Misleading conclusions    
-
-_Remedies_  
-
-- Report all hypotheses in the write-up regardless of whether they were confirmed or not 
-- If some hypotheses get left out due to the scope of the write-up be transparent about it
-- Pre-registration    
-
-_Detectability_  
-
-Maybe
-
-_Clues to detect_  
-
-- Number of hypotheses in pre-registration (or dissertation) exceeds the number in the publication  
 
 
 ---
@@ -1321,8 +1543,8 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated confidence in the research
-- Misleading conclusions    
+- Inflated credibility of statements
+- Inflated confidence in the research    
 
 _Remedies_  
 
@@ -1341,152 +1563,11 @@ _Clues to detect_
 
 ---
 
-**Omitting important details of the scientific process**  
+**Not disclosing deviations from preregistration**  
 
 _Definition_    
 
-Not reporting important details of the methodology and statistical analysis.  
-
-_Alias(es) and related concepts_
-
-Incomplete methods or results section  
-
-_Umbrella term(s)_
-
-Cherry-picking  
-
-_Examples_  
-
-(1) Researcher omits sample characteristics.
-(2) Researcher reports correlations without specifying the type, e.g. Spearman.
-(3) Researcher reports having conducted an online study and does not reveal it was an MTurk-study.
-(4) Researcher does not fully disclose compensation etc. for participants during data collection. 
-(5) Researcher does not share study materials on request.
-(6) Researcher does not report exact questionnaire items.  
-
-_Potential damages_  
-
-- Reduced replicability
-- Reduced reproducibility
-- Reduced generalizability
-- Misleading conclusions    
-
-_Remedies_  
-
-- Report every important detail of the scientific process
-- Pre-registration or written research plan before conducting the study
-- Use a lab log during data collection to keep track of changes in the scientific process    
-
-_Detectability_  
-
-Maybe
-
-_Clues to detect_  
-
-- Details that are usually shared are missing
-- Replication is not possible from published methods
-- Absence of open study materials  
-
-
----
-
-**Selective reporting of indicator variables**  
-
-_Definition_    
-
-Reporting only the indicator variables (or predictors, features, independent variables) that are used in analyses that produce expected results.  
-
-_Alias(es) and related concepts_
-
-Cherry-picking indicator variables, 
-Cherry-picking conditions/ groups  
-
-_Umbrella term(s)_
-
-Cherry-picking  
-
-_Examples_  
-
-(1) Researcher reports IVs that are associated with the outcome rather than including all measured IVs in the results section.
-(2) Researcher drops one or more conditions or groups/merges two or more groups into one / splits a group into more groups than were initially planned depending on statistical results.  
-
-_Potential damages_  
-
-- Inflated type I or type II error
-- Inflated or deflated effect size estimates
-- Reduced replicability
-- Reduced generalizability
-- Misleading conclusions    
-
-_Remedies_  
-
-- Report all indicators
-- Pre-registration    
-
-_Detectability_  
-
-Maybe
-
-_Clues to detect_  
-
--  Number of pre-registered indicators exceeds the number of indicators in publication
-- Reported mean time of participation does not match the number of reported measures
-- Measures get reported in the methods section but not in the results section
-- Indicators reported in Supplemental Material but not mentioned in main text  
-
-
----
-
-**Selective reporting of outcomes**  
-
-_Definition_    
-
-Reporting only the outcomes (or dependent variables) that are used in analyses that produce expected results.  
-
-_Alias(es) and related concepts_
-
-Cherry-picking outcomes  
-
-_Umbrella term(s)_
-
-Cherry-picking  
-
-_Examples_  
-
-(1) Researcher uses several scales to measure the same construct but only reports the one that produces expected results.  
-
-_Potential damages_  
-
-- Inflated type I or type II error
-- Inflated or deflated effect size estimates
-- Reduced replicability
-- Reduced generalizability
-- Misleading conclusions    
-
-_Remedies_  
-
-- Report all outcomes
-- Pre-registration    
-
-_Detectability_  
-
-Maybe
-
-_Clues to detect_  
-
-- Number of pre-registered outcomes exceeds number outcomes in publication
-- Reported mean time of participation does not match number of reported measures
-- Measures get reported in the methods section but not in the results section 
-- Outcomes reported in Supplemental Material but not mentioned in main text  
-
-
----
-
-**Incorrect reporting of test statistics**  
-
-_Definition_    
-
-Not using statistical test reporting conventions to obscure exact results and assume that they are above or below threshold values.  
+Deviating from the preregistration without transparency and proper justification in the publication.  
 
 _Alias(es) and related concepts_
 
@@ -1495,29 +1576,24 @@ _Alias(es) and related concepts_
 
 _Umbrella term(s)_
 
-None  
-  
+Misusing open science practices  
 
 _Examples_  
 
-(1)     Researcher is ‘rounding off’ a p-value in a paper (e.g., reporting that a p-value of .054 is less or equal to .05).
-(2)     Researcher reports p-values only and conceals test statistics.
-(3)     Researcher reports a correlation without disclosing the degrees of freedom, number of observations, or confidence interval, so it seems like the effect is large (for example r=.70, n=15, CI=[.01; .90]).
-(4)     Researcher does a model comparison and only reports fit statistics that are in favor of the preferred model.  
+(1) Researcher preregisters that they would collect data from a non-student sample, but ends up including students, and does not disclose this deviation.
+(2) Researcher preregisters a data analysis using linear regression but used robust regression instead without reporting the discrepancy.
+(3) See also Example 1 in Selective reporting of hypotheses.  
 
 _Potential damages_  
 
-- Inflated type I or type II error
-- Reduced reproducibility
-- Misleading conclusions    
+- Reduced replicability
+- Inflated confidence in the research    
 
 _Remedies_  
 
-- Adhere to reporting conventions (e.g., APA)
-- Use literary programming (e.g., RMarkdown, quarto, jupyter)
-- Work with software that supports you in producing and checking your write-up (e.g., papaja, stat-check)
-- Publish data
-- Publish processing and analysis code    
+- Disclose and justify every divergence from the preregistration
+- Avoid vagueness in preregistration
+- Use methods that will provide robust results even when preregistration is not specific at points (e.g. blind data analysis, cross-validation)    
 
 _Detectability_  
 
@@ -1525,20 +1601,17 @@ Yes
 
 _Clues to detect_  
 
-- Statistics are not reported according to conventions (e.g., three digits for p-values, reporting of df)
-- Fit statistics are missing without proper explanation
-- Anomalies in reported statistics, e.g., test statistics are incompatible with p-values
-- Absence of open data
-- Absence of open code  
+- Preregistration and published study differ on important aspects
+- Link to the preregistration in the manuscript does not work/ leads to a private OSF project  
 
 
 ---
 
-**Visualizing data in a misleading way**  
+**Not linking the Preregistration to the published study**  
 
 _Definition_    
 
-Choosing suboptimal visualizations or altering figure properties in order to exaggerate or diminish effects.  
+Creating a preregistration but not associating it with the published study.  
 
 _Alias(es) and related concepts_
 
@@ -1552,61 +1625,15 @@ None
 
 _Examples_  
 
-(1)     Researcher truncates the y-axis so it is not starting at zero and/or does not add error bars. This makes differences seem larger and more significant than they are in reality.
-(2)     Researcher uses arbitrary categories to present interval data on a map.
-(3)     Researcher displays a pie chart with percentage numbers falling below or exceeding 100.  
+(1) Researcher preregisters a study and after conducting the research the preregistration is not mentioned in the manuscript because of too many diversions.  
 
 _Potential damages_  
 
-- Misleading conclusions    
+NA    
 
 _Remedies_  
 
-- Follow best practices on how to visualize data    
-
-_Detectability_  
-
-Yes
-
-_Clues to detect_  
-
-- Visualization does not match the reported results in the text
-- In a plot y-axis is starting at an arbitrary point
-- Statistical uncertainty (e.g., error bars) is not shown on plots
-- Only summary statistics are shown without individual data points
-- Scale or response options in text do not match how they are presented in a plot
-- Chartjunk (e.g., 3d elements, ornaments) is present on the plot  
-
-
----
-
-**Not linking the Pre-registration to the published study**  
-
-_Definition_    
-
-Creating a pre-registration but not associating it with the published study.  
-
-_Alias(es) and related concepts_
-
--  
-  
-
-_Umbrella term(s)_
-
-None  
-  
-
-_Examples_  
-
-(1) Researcher pre-registers a study and after conducting the research the pre-registration is not mentioned in the manuscript because of too many diversions.  
-
-_Potential damages_  
-
-- Potential HARKing    
-
-_Remedies_  
-
-- Always link the pre-registration to the manuscript and report discrepancies    
+- Always link the preregistration to the manuscript and report discrepancies    
 
 _Detectability_  
 
@@ -1614,7 +1641,7 @@ Maybe
 
 _Clues to detect_  
 
-- A pre-registration that fits the study is findable  
+- A preregistration that fits the study is findable  
 
 
 ---
@@ -1632,8 +1659,7 @@ _Alias(es) and related concepts_
 
 _Umbrella term(s)_
 
-None  
-  
+Misusing open science practices  
 
 _Examples_  
 
@@ -1663,6 +1689,46 @@ _Clues to detect_
 
 ---
 
+**Publishing studies selectively**  
+
+_Definition_    
+
+Choosing which study to publish or share based on whether the findings fit expectations.  
+
+_Alias(es) and related concepts_
+
+File drawer problem  
+
+_Umbrella term(s)_
+
+Cherry-picking  
+
+_Examples_  
+
+(1) Researcher runs a study and finds out the results do not support their hypothesis (e.g., no significant findings). Thus the researcher does not try to publish or share the study publicly.
+(2) Researcher runs several studies, and publishes only those that support the hypothesis in a multi-study paper.  
+
+_Potential damages_  
+
+- Creates publication bias 
+- Creates a false sense of confidence in a multi-study paper    
+
+_Remedies_  
+
+- Publish all studies, even when the findings do not support hypotheses
+- Only preregister on platforms, that will eventually publish all preregistrations    
+
+_Detectability_  
+
+No
+
+_Clues to detect_  
+
+- Publication bias can be estimated in meta-analysis  
+
+
+---
+
 **Declaring false authorship**  
 
 _Definition_    
@@ -1686,7 +1752,7 @@ Honorary authorship: Researcher adds a co-author who did not contribute to the m
 
 _Potential damages_  
 
-- Inflated credibility based on the reputation of authors who were included in (or excluded from) the author list
+- Inflated confidence in the research based on the reputation of authors who were included in (or excluded from) the author list
 - Contributing authors may not get the credit they ought to get    
 
 _Remedies_  
@@ -1703,47 +1769,6 @@ _Clues to detect_
 
 None  
   
-
-
----
-
-**Publishing studies selectively**  
-
-_Definition_    
-
-Choosing which study to publish or share based on whether the findings fit expectations.  
-
-_Alias(es) and related concepts_
-
-File drawer problem  
-
-_Umbrella term(s)_
-
-Cherry-picking  
-
-_Examples_  
-
-(1) Researcher runs a study and finds out the results do not support their hypothesis (e.g., no significant findings). Thus the researcher does not try to publish or share the study publicly.
-(2) Researcher runs several studies, and publishes only those that support the hypothesis in a multi-study paper.  
-
-_Potential damages_  
-
-- Creates publication bias 
-- Creates a false sense of confidence in a multi-study paper
-- Misleading conclusions    
-
-_Remedies_  
-
-- Publish all studies, even when the findings do not support hypotheses
-- Only pre-register on platforms, that will eventually publish all pre-registrations    
-
-_Detectability_  
-
-No
-
-_Clues to detect_  
-
-- Publication bias can be estimated in meta-analysis  
 
 
 ---
@@ -1776,7 +1801,7 @@ _Potential damages_
 _Remedies_  
 
 - Publish study results in one single publication or disclose all related papers
-- Pre-registration of publication strategy    
+- Preregister the study of publication strategy    
 
 _Detectability_  
 
