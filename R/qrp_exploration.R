@@ -283,7 +283,7 @@ rmarkdown::render("docs/qrp_text.Rmd", output_file = "qrp_text.docx")
 
 
 # Create a landscape layout -----------------------------------------------
-page_size = 5
+page_size = 4
 
 # TODO: Sort damages, clues, remedies, and sources based on alphabetic order
 # TODO: keep the bullet point look for damages, clues, remedies, and sources 
