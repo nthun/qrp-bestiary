@@ -161,6 +161,44 @@ qrp |>
   count(remedy, sort = TRUE) |> 
   print(n = 100)
 
+
+qrp |> 
+  select(qrp, remedy_aggregated) |> 
+  separate_rows(remedy_aggregated, sep = "- |\n") |> 
+  filter(!remedy_aggregated %in% c("", "-", NA)) |> 
+  count(str_squish(remedy_aggregated), sort = TRUE) |> 
+  print(n = 100)
+
+# Create a table, with aggregated remedies
+qrp |> 
+  select(qrp, research_phase, remedy = remedy_aggregated) |> 
+  separate_rows(remedy, sep = "\n|\r\n") |> 
+  mutate(remedy = str_remove(remedy, "- ") |> str_squish(),
+         value = "X") |> 
+  pivot_wider(names_from = remedy,
+              values_from = value, 
+              values_fn = first,
+              values_fill = "") %>% 
+  select(names(.) |> sort()) |> 
+  relocate(qrp) |> 
+  relocate(-`Other specific remedy`) |> 
+  group_by(research_phase) |> 
+  arrange(qrp, .by_group = TRUE) |> 
+  gt() |> 
+  cols_label(qrp = "QRP") |> 
+  tab_options(
+    # column_labels.background.color = "#CCCCCC",
+    column_labels.font.size = 12, 
+    table.font.size = 12,
+    column_labels.font.weight = "bold", 
+    row_group.background.color = "#EEEEEE", 
+    data_row.padding = 0, row_group.padding = 0,
+    row_group.font.weight = "bold",
+    table.align = "left") |> 
+    gtsave("docs/remedies_table.docx")
+
+
+
 # Detectability -----------------------------------------------------------
 
 qrp |> 
@@ -266,7 +304,7 @@ qrp_long <-
 
 qrp_assembled <-
   qrp_long |> 
-  select(qrp, `Alias(es) & related concepts` = aliases, Definition = definition, `Umbrella term(s)` = umbrella_terms, `Research phase` = research_phase, `Example(s)`, `Potential damages` = damage, Remedies = remedy, Detectability = detectability, Clues = clues, Sources = `source(s)`, page) |> 
+  select(qrp, `Alias(es) & related concepts` = aliases, Definition = definition, `Umbrella term(s)` = umbrella_terms, `Research phase` = research_phase, `Example(s)`, `Potential harms` = damage, Remedies = remedy, Detectability = detectability, Clues = clues, Sources = `source(s)`, page) |> 
   group_by(page) |> 
   nest() |> 
   mutate(data = map(data, ~ t(.x) %>%
