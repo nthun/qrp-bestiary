@@ -294,7 +294,7 @@ qrp_long <-
   mutate(page = ((row_number() - 1) %/% page_size) + 1) |> 
   arrange(page, phase_order, qrp) |> 
   mutate(clues = if_else(clues == "-", "None  \n", clues),
-         aliases = if_else(is.na(aliases), "-  \n", aliases),
+         aliases = if_else(is.na(aliases), "--  \n", aliases),
          umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
          `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- "),
          qrp = fct_inorder(qrp)
