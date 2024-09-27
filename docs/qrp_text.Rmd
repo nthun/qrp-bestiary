@@ -27,8 +27,8 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated effect size estimates
+- Inflated type I or type II error
 - Reduced replicability    
 
 _Remedies_  
@@ -71,9 +71,9 @@ _Examples_
 
 _Potential damages_  
 
+- Inflated confidence in the research
 - Inflated type II error
-- Reduced replicability
-- Inflated confidence in the research    
+- Reduced replicability    
 
 _Remedies_  
 
@@ -86,9 +86,9 @@ Yes
 
 _Clues to detect_  
 
-- Relatively low sample size
 - Details of power analysis not reported or justified
 - Parameters of the power analysis are generic and do not fit the study
+- Relatively low sample size
 - The results of power analysis are misinterpreted  
 
 
@@ -119,9 +119,9 @@ _Potential damages_
 
 _Remedies_  
 
-- Preregister before analyzing the data
 - Be transparent about when the preregistration was done
-- Disclose the familiarity (if any) of the researcher with the data    
+- Disclose the familiarity (if any) of the researcher with the data
+- Preregister before analyzing the data    
 
 _Detectability_  
 
@@ -157,8 +157,8 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
+- Inflated type I or type II error
 - Reduced generalizability    
 
 _Remedies_  
@@ -173,10 +173,10 @@ Maybe
 
 _Clues to detect_  
 
-- Using stimuli that were not previously tested and/or have no proven effect
-- Using stimuli that can elicit extreme responses
+- Lack of manipulation check
 - Using dosages outside of recommended values
-- Lack of manipulation check  
+- Using stimuli that can elicit extreme responses
+- Using stimuli that were not previously tested and/or have no proven effect  
 
 
 ---
@@ -204,15 +204,15 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error 
 - Inflated or deflated effect size estimates 
+- Inflated type I or type II error 
 - Reduced replicability    
 
 _Remedies_  
 
 - Frame questions in a neutral way
-- Use questionnaires that are unbiased and psychometrically sound
-- Get external opinions on questionnaires/study materials OR Registered report    
+- Get external opinions on questionnaires/study materials OR conduct a registered report
+- Use questionnaires that are unbiased and psychometrically sound    
 
 _Detectability_  
 
@@ -221,9 +221,9 @@ Yes
 _Clues to detect_  
 
 - Ad hoc questionnaires are used instead of validated instruments
-- No discussion of the psychometric properties of the instruments
-- Measurement items use suggestive or biased language
-- Measurement is based on single-item questions  
+Measurement items use suggestive or biased language
+- Measurement is based on single-item questions
+- No discussion of the psychometric properties of the instruments  
 
 
 ---
@@ -244,25 +244,25 @@ Sample curation
 
 _Examples_  
 
-(1)     Researcher tests the likeability of chocolate on a group of children only in order to find that everyone loves it.
-(2)     Using uncomparable groups: The researcher tests if men are more aggressive than women. For comparison, women from a university are compared with men from a prison.
-(3)     Picking a subsample of a panel dataset to find the desired results.  
+(1) Researcher tests the likeability of chocolate on a group of children only in order to find that everyone loves it.
+(2) Using uncomparable groups: The researcher tests if men are more aggressive than women. For comparison, women from a university are compared with men from a prison.
+(3) Picking a subsample of a panel dataset to find the desired results.  
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
+- Inflated type I or type II error
 - Reduced generalizability
 - Reduced replicability if sampling bias is not disclosed    
 
 _Remedies_  
 
-- Use a sampling method that doesn't bias the results
-- Make sure that the sample represents the population
-- Use comparable (or matched) groups
-- Report the sampling process transparently
 - Consider using statistical control for confounding variables
-- Preregister the sampling process    
+- Make sure that the sample represents the population
+- Preregister the sampling process
+- Report the sampling process transparently
+- Use a sampling method that doesn't bias the results
+- Use comparable (or matched) groups    
 
 _Detectability_  
 
@@ -270,9 +270,9 @@ Yes
 
 _Clues to detect_  
 
-- Unclear rationale for sample selection
 - Compared groups are from different populations
-- Convenience sample  
+- Convenience sample
+- Unclear rationale for sample selection  
 
 
 ---
@@ -303,8 +303,8 @@ _Potential damages_
 
 _Remedies_  
 
-- Preregister the estimated sample size
-- Preregister stopping rules and adjustments for type I error-inflation    
+- Preregister stopping rules and adjustments for type I error-inflation 
+- Preregister the estimated sample size    
 
 _Detectability_  
 
@@ -312,11 +312,11 @@ Maybe
 
 _Clues to detect_  
 
-- Vague or absent reason for sample size
-- Low sample size
 - Absence of preregistration
+- Low sample size
 - P-values are just below the significance threshold (usually 0.05)
-- Relatively large effect size compared to other studies in the field  
+- Relatively large effect size compared to other studies in the field
+- Vague or absent reason for sample size  
 
 
 ---
@@ -341,9 +341,9 @@ _Examples_
 
 _Potential damages_  
 
+- Inflated or deflated effect size estimates
 - Inflated type I or type II error
-- Reduced replicability
-- Inflated or deflated effect size estimates    
+- Reduced replicability    
 
 _Remedies_  
 
@@ -356,7 +356,7 @@ Maybe
 
 _Clues to detect_  
 
-- If data is shared, timestamps may fall into two distinct periods
+- If data are shared, timestamps may fall into two distinct periods
 - Sample sizes reported throughout the paper might not match  
 
 
@@ -385,16 +385,16 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
+- Inflated type I or type II error
 - Reduced replicability    
 
 _Remedies_  
 
+- Avoid exposing participants to any cues that might influence their responses
 - Blind the experimenter where possible
-- As a researcher interacting with participants, remain neutral and follow scripts during testing
-- Use automated research procedures (e.g. research presentation software) instead of human research assistants wherever possible
-- Avoid exposing participants to any cues that might influence their responses    
+- Researchers interacting with participants should remain neutral and follow scripts during testing
+- Use automated research procedures (e.g. research presentation software) instead of human research assistants wherever possible    
 
 _Detectability_  
 
@@ -430,16 +430,16 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
+- Inflated type I or type II error
 - Reduced reproducibility
 - Reduced replicability    
 
 _Remedies_  
 
-- Preregister missing data approach
 - Perform blinded data analysis
-- Perform sensitivity analysis    
+- Perform sensitivity analysis
+- Preregister missing data approach    
 
 _Detectability_  
 
@@ -447,10 +447,10 @@ Maybe
 
 _Clues to detect_  
 
-- No mention of the missing data approach or the missing data at all
+- Absence of open data
 - Lack of rationale or references supporting the missing data approach
-- Unexplained discrepancy between the recruited and analyzed sample sizes
-- Absence of open data  
+- No mention of the missing data approach or the missing data at all
+- Unexplained discrepancy between the recruited and analyzed sample sizes  
 
 
 ---
@@ -478,19 +478,18 @@ _Examples_
 
 _Potential damages_  
 
+- Inflated or deflated effect size estimates
 - Inflated type I or type II error
 - Reduced generalizability
 - Reduced replicability
-- Reduced reproducibility
-- Inflated or deflated effect size estimates    
+- Reduced reproducibility    
 
 _Remedies_  
 
-- Preregister the study
-- Use valid reasons to exclude participants
-- Report post hoc changes in exclusion criteria
 - Perform blinded data analysis 
-- Perform sensitivity analysis    
+- Perform sensitivity analysis
+- Preregister the study
+- Report post hoc changes in exclusion criteria    
 
 _Detectability_  
 
@@ -498,10 +497,10 @@ Maybe
 
 _Clues to detect_  
 
-- Absence of preregistration
 - Absence of open data
-- Unexplained discrepancy between the recruited and analyzed sample sizes
-- Sample too narrow for recruitment methods  
+- Absence of preregistration
+- Sample too narrow for recruitment methods
+- Unexplained discrepancy between the recruited and analyzed sample sizes  
 
 
 ---
@@ -528,19 +527,18 @@ _Examples_
 
 _Potential damages_  
 
+- Inflated or deflated effect size estimates
 - Inflated type I or type II error
 - Reduced generalizability
 - Reduced replicability
-- Reduced reproducibility
-- Inflated or deflated effect size estimates    
+- Reduced reproducibility    
 
 _Remedies_  
 
-- Preregister the study
-- Use valid reasons to exclude data points or outliers
-- Report post hoc changes in exclusion criteria
 - Perform blinded data analysis
-- Perform sensitivity analysis    
+- Perform sensitivity analysis 
+- Preregister the study
+- Report post hoc changes in exclusion criteria    
 
 _Detectability_  
 
@@ -548,8 +546,8 @@ Maybe
 
 _Clues to detect_  
 
-- Absence of preregistration
 - Absence of open data
+- Absence of preregistration
 - Unexplained discrepancy between the recruited and analyzed sample sizes and degrees of freedom  
 
 
@@ -577,17 +575,16 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
+- Inflated type I or type II error
 - Reduced replicability
 - Reduced reproducibility
 - Reduced generalizability    
 
 _Remedies_  
 
-- Preregister the study
-- Use valid reasons to define group membership
 - Report post hoc changes in grouping rules and report results using original grouping rules as well
+- Preregister the study
 - Perform blinded data analysis
 - Perform sensitivity analysis    
 
@@ -597,10 +594,10 @@ Maybe
 
 _Clues to detect_  
 
-- Absence of preregistration
 - Absence of open data
-- Response options in materials/methods different than reported groups
-- Oversimplified sample description  
+- Absence of preregistration
+- Oversimplified sample description
+- Response options in materials/methods different than reported groups  
 
 
 ---
@@ -626,18 +623,17 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
+- Inflated type I or type II error
 - Reduced replicability
 - Reduced generalizability    
 
 _Remedies_  
 
-- Preregister the study
-- Use original measurement levels
-- Discretize only with strong justification
 - Perform blinded data analysis
-- Perform sensitivity analysis    
+- Perform sensitivity analysis
+- Preregister the study
+- Use original measurement levels    
 
 _Detectability_  
 
@@ -684,12 +680,12 @@ _Potential damages_
 
 _Remedies_  
 
-- Publish study materials
-- Preregister the study
-- Use conventional measurements/measures
 - Describe and justify any modifications on measurements
 - Perform blinded data analysis
-- Perform sensitivity analysis    
+- Perform sensitivity analysis
+- Publish study materials
+- Preregister the study
+- Use conventional measurements/measures    
 
 _Detectability_  
 
@@ -725,17 +721,17 @@ _Examples_
 
 _Potential damages_  
 
-- Reduced replicability
-- Reduced reproducibility
+- Inflated or deflated effect size estimates
 - Inflated type I or type II error
-- Inflated or deflated effect size estimates    
+- Reduced replicability
+- Reduced reproducibility    
 
 _Remedies_  
 
-- Preregister under which conditions transformations will be performed
 - Describe and justify any variable transformations
 - Perform blinded data analysis
-- Perform sensitivity analysis    
+- Perform sensitivity analysis
+- Preregister conditional transformations    
 
 _Detectability_  
 
@@ -744,9 +740,9 @@ Maybe
 _Clues to detect_  
 
 - Abscence of open data
-- Using transformations that are unconventional for the measure
+- Reported values are outside of regular range
 - Transformation is applied without justification
-- Reported values are outside of regular range  
+- Using transformations that are unconventional for the measure  
 
 
 ---
@@ -773,19 +769,17 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
+- Inflated type I or type II error
+- Reduced generalizability
 - Reduced replicability
-- Reduced reproducibility
-- Reduced generalizability    
+- Reduced reproducibility    
 
 _Remedies_  
 
-- Provide reasonable arguments for inclusion/ exclusion of covariates
+- Perform blinded data analysis
 - Preregister complete models/analytical plan
-- Report robustness checks
-- Follow clear guidelines
-- Perform blinded data analysis    
+- Report robustness checks    
 
 _Detectability_  
 
@@ -824,10 +818,10 @@ _Potential damages_
 
 _Remedies_  
 
-- Preregister p-value adjustment plans
-- Preregister planned contrasts
 - Perform blinded data analysis
-- Perform sensitivity analysis    
+- Perform sensitivity analysis 
+- Preregister p-value adjustment plans
+- Preregister planned contrasts    
 
 _Detectability_  
 
@@ -835,8 +829,8 @@ Yes
 
 _Clues to detect_  
 
-- P-value adjustment not mentioned
 - Multiple tests are made that would require p-value adjustment
+- P-value adjustment not mentioned
 - Using p-value correction that is too strict (e.g., Bonferroni) without proper justification  
 
 
@@ -864,16 +858,16 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
-- Inflated or deflated effect size estimates    
+- Inflated or deflated effect size estimates
+- Inflated type I or type II error    
 
 _Remedies_  
 
+- Perform blinded data analysis
+- Perform sensitivity analysis 
 - Use a theoretically justified model in confirmatory studies
 - Underfitting: Visualize data and the model
-- Use methods that prevent overfitting in exploratory research, e.g. use separate train and test datasets, use cross-validation resampling methods, use regularization or other feature selection methods
-- Perform blinded data analysis
-- Perform sensitivity analysis    
+- Use methods that prevent overfitting in exploratory research, e.g. use separate train and test datasets, use cross-validation resampling methods, use regularization or other feature selection methods    
 
 _Detectability_  
 
@@ -881,11 +875,11 @@ Yes
 
 _Clues to detect_  
 
-- The number of observations is low
-- The number of included predictors in the model is large
+- Improper prediction selection (e.g., no regularization)
 - No mention of holdout (or test) dataset or cross-validation
 - Overfitting: Very high R2 value (close to 1)
-- Improper prediction selection (no regularization)
+- The number of included predictors in the model is large
+- The number of observations is low
 - Underfitting: Data visualization shows high model bias  
 
 
@@ -927,8 +921,8 @@ Yes
 
 _Clues to detect_  
 
-- Not reporting assumption checks
-- Evidence of assumption breaches (e.g., non-normality, non-independent data, largely different SDs by group)  
+- Evidence of assumption breaches (e.g., non-normality, non-independent data, largely different SDs by group)
+- Not reporting assumption checks  
 
 
 ---
@@ -953,15 +947,15 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
+- Inflated type I or type II error
 - Reduced replicability
 - Reduced reproducibility    
 
 _Remedies_  
 
 - Only report significance if the results are robust across random seeds
-- Use a large number of replications (e.g. bootstrap  samples)
+- Use a large number of replications (e.g., bootstrap samples)
 - Perform blinded data analysis    
 
 _Detectability_  
@@ -997,17 +991,17 @@ Researcher analyzes the data using (1) multiple statistical methods (multiple t-
 
 _Potential damages_  
 
+- Inflated confidence in the research
 - Inflated type I or type II error
 - Reduced reproducibility
-- Reduced replicability
-- Inflated confidence in the research    
+- Reduced replicability    
 
 _Remedies_  
 
-- Preregister data processing (e.g. missing data approach) and statistical analysis strategy
 - Perform blinded data analysis
-- Use simulated data to plan analysis (write code)
-- Perform specificity curve analysis    
+- Perform specificity curve analysis
+- Preregister data processing (e.g., missing data approach) and statistical analysis strategy
+- Report all performed hypothesis-tests    
 
 _Detectability_  
 
@@ -1050,8 +1044,8 @@ NA
 
 _Remedies_  
 
+- Make it clear that the evidence is limited to certain contexts
 - Make sure that every interpretation is properly supported by evidence 
-- Make clear that the evidence is limited to certain contexts
 - Use conditional statements where evidence is weak or the researcher uses extrapolation    
 
 _Detectability_  
@@ -1060,10 +1054,10 @@ Yes
 
 _Clues to detect_  
 
-- The chosen methodology and statistical analysis do not allow to answer the hypothesis
-- The statistical results do not match the conclusions
 - Causal claims are made without the methodology or analysis allowing causal inference
-- Results are generalized to contexts outside of the study's scope  
+- Results are generalized to contexts outside of the study's scope
+- The chosen methodology and statistical analysis do not allow to answer the hypothesis
+- The statistical results do not match the conclusions  
 
 
 ---
@@ -1093,18 +1087,18 @@ _Examples_
 
 _Potential damages_  
 
-- Reduced replicability
-- Inflated type I or type II error
+- Inflated confidence in the research
 - Inflated or deflated effect size estimates
-- Inflated confidence in the research    
+- Inflated type I or type II error
+- Reduced replicability    
 
 _Remedies_  
 
-- Formulate hypotheses before analyzing the data
-- Preregister confirmatory hypotheses
 - Clearly separate exploratory and confirmatory findings
-- Use robust exploratory research practices (e.g. holdout dataset, cross-validation, multiverse analysis, blinded data analysis, etc.)
-- Perform blinded data analysis    
+- Form hypotheses before analyzing the data
+- Perform blinded data analysis
+- Preregister confirmatory hypotheses
+- Use robust exploratory research practices (e.g. holdout dataset, cross-validation, multiverse analysis, blinded data analysis, etc.)    
 
 _Detectability_  
 
@@ -1149,10 +1143,10 @@ _Potential damages_
 _Remedies_  
 
 - Adhere to reporting conventions (e.g., APA)
-- Use literate programming (e.g., RMarkdown, quarto, jupyter)
-- Work with software that supports you in producing and checking your write-up (e.g., papaja, stat-check)
 - Publish data
-- Publish processing and analysis code    
+- Publish processing and analysis code
+- Use literate programming (e.g., RMarkdown, quarto, jupyter)
+- Work with software that supports you in producing and checking your write-up (e.g., papaja, stat-check)    
 
 _Detectability_  
 
@@ -1160,11 +1154,11 @@ Yes
 
 _Clues to detect_  
 
-- Statistics are not reported according to conventions (e.g., three digits for p-values, reporting of df)
-- Fit statistics are missing without proper explanation
-- Anomalies in reported statistics, e.g., test statistics are incompatible with p-values
+- Absence of open code
 - Absence of open data
-- Absence of open code  
+- Anomalies in reported statistics, e.g., test statistics are incompatible with p-values
+- Fit statistics are missing without proper explanation
+- Statistics are not reported according to conventions (e.g., three digits for p-values, reporting of df)  
 
 
 ---
@@ -1187,9 +1181,9 @@ None
 
 _Examples_  
 
-(1)     Researcher truncates the y-axis so it is not starting at zero and/or does not add error bars. This makes differences seem larger and more significant than they are in reality.
-(2)     Researcher uses arbitrary categories to present interval data on a map.
-(3)     Researcher displays a pie chart with percentage numbers falling below or exceeding 100.  
+(1) Researcher truncates the y-axis so it is not starting at zero and/or does not add error bars. This makes differences seem larger and more significant than they are in reality.
+(2) Researcher uses arbitrary categories to present interval data on a map.
+(3) Researcher displays a pie chart with percentage numbers falling below or exceeding 100.  
 
 _Potential damages_  
 
@@ -1205,12 +1199,12 @@ Yes
 
 _Clues to detect_  
 
-- Visualization does not match the reported results in the text
+- Chartjunk (e.g., 3D elements, ornaments) is present on the plot
 - In a plot y-axis is starting at an arbitrary point
-- Statistical uncertainty (e.g., error bars) is not shown on plots
 - Only summary statistics are shown without individual data points
 - Scale or response options in text do not match how they are presented in a plot
-- Chartjunk (e.g., 3d elements, ornaments) is present on the plot  
+- Statistical uncertainty (e.g., error bars) is not shown on plots
+- Visualization does not match the reported results in the text  
 
 
 ---
@@ -1233,20 +1227,20 @@ Cherry-picking
 
 _Examples_  
 
-Researcher formulates five hypotheses of which only three are supported by the data - only these 3 get reported in the final research report (Chrysalis effect).
-(2)     Fishing expedition - The researcher surveys college students about the outfit they are wearing and their scores on several tests which allows for many possible analyses (examining different colors, types of clothing, tests, score cutoffs, etc.). They end up reporting only a subset of findings to claim college students perform significantly better on tests when they are wearing green. See also Modifying measurement, Selective reporting of indicator variables, and Selective reporting of outcomes.  
+(1) Researcher formulates five hypotheses of which only three are supported by the data - only these 3 get reported in the final research report (Chrysalis effect).
+(2) Fishing expedition - The researcher surveys college students about the outfit they are wearing and their scores on several tests which allows for many possible analyses (examining different colors, types of clothing, tests, score cutoffs, etc.). They end up reporting only a subset of findings to claim college students perform significantly better on tests when they are wearing green. See also Modifying measurement, Selective reporting of indicator variables, and Selective reporting of outcomes.  
 
 _Potential damages_  
 
 - Inflated confidence in the research
-- Inflated type I or type II error
-- Inflated or deflated effect size estimates    
+- Inflated or deflated effect size estimates
+- Inflated type I or type II error    
 
 _Remedies_  
 
-- Report all hypotheses in the write-up regardless of whether they were confirmed or not 
 - If some hypotheses get left out due to the scope of the write-up be transparent about it
-- Preregister the study    
+- Preregister the study
+- Report all hypotheses in the write-up regardless of whether they were confirmed or not    
 
 _Detectability_  
 
@@ -1284,14 +1278,14 @@ _Examples_
 
 _Potential damages_  
 
+- Reduced generalizability
 - Reduced replicability
-- Reduced reproducibility
-- Reduced generalizability    
+- Reduced reproducibility    
 
 _Remedies_  
 
-- Report every important detail of the scientific process
 - Preregister the study or written research plan before conducting the study
+- Report every important detail of the scientific process
 - Use a lab log during data collection to keep track of changes in the scientific process    
 
 _Detectability_  
@@ -1300,9 +1294,9 @@ Maybe
 
 _Clues to detect_  
 
+- Absence of open study materials
 - Details that are usually shared are missing
-- Replication is not possible from published methods
-- Absence of open study materials  
+- Replication is not possible from published methods  
 
 
 ---
@@ -1329,16 +1323,16 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
-- Reduced replicability
-- Reduced generalizability    
+- Inflated type I or type II error
+- Reduced generalizability
+- Reduced replicability    
 
 _Remedies_  
 
-- Report all indicators
+- Perform blinded data analysis
 - Preregister the study
-- Perform blinded data analysis    
+- Report all indicators    
 
 _Detectability_  
 
@@ -1346,10 +1340,10 @@ Maybe
 
 _Clues to detect_  
 
--  Number of preregistered indicators exceeds the number of indicators in publication
-- Reported mean time of participation does not match the number of reported measures
+- Indicators reported in Supplemental Material but not mentioned in main text
 - Measures get reported in the methods section but not in the results section
-- Indicators reported in Supplemental Material but not mentioned in main text  
+- Number of preregistered indicators exceeds the number of indicators in publication
+- Reported mean time of participation does not match the number of reported measures  
 
 
 ---
@@ -1370,20 +1364,21 @@ Cherry-picking
 
 _Examples_  
 
-(1) Researcher uses several scales to measure the same construct but only reports the one that produces expected results.  
+(1) Researcher uses several scales to measure the same construct but only reports the one that produces expected results.
+(2) Researcher tests effectiveness of a new intervention for depression by measuring its effects on anxiety, sleep quality, and stress and only reports the outcome that shows the desired effect.  
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Inflated or deflated effect size estimates
-- Reduced replicability
-- Reduced generalizability    
+- Inflated type I or type II error
+- Reduced generalizability
+- Reduced replicability    
 
 _Remedies_  
 
-- Report all outcomes
+- Perform blinded data analysis
 - Preregister the study
-- Perform blinded data analysis    
+- Report all outcomes    
 
 _Detectability_  
 
@@ -1391,10 +1386,10 @@ Maybe
 
 _Clues to detect_  
 
-- Number of preregistered outcomes exceeds number outcomes in publication
-- Reported mean time of participation does not match number of reported measures
 - Measures get reported in the methods section but not in the results section 
-- Outcomes reported in Supplemental Material but not mentioned in main text  
+- Number of preregistered outcomes exceeds number outcomes in publication
+- Outcomes reported in Supplemental Material but not mentioned in main text
+- Reported mean time of participation does not match number of reported measures  
 
 
 ---
@@ -1468,8 +1463,8 @@ _Potential damages_
 
 _Remedies_  
 
-- Only cite publications that properly support their claims
-- Never cite a retracted study    
+- Never cite a retracted study
+- Only cite publications that properly support their claims    
 
 _Detectability_  
 
@@ -1477,7 +1472,7 @@ Yes
 
 _Clues to detect_  
 
-- Cited publication provides no or low-quality evidence to its claims
+- The cited publication provides no or low-quality evidence to its claims
 - The cited publication is retracted or otherwise discredited or its claims are refuted  
 
 
@@ -1556,8 +1551,8 @@ Yes
 
 _Clues to detect_  
 
-- Important studies and experts are missing from references
 - Cited studies only point into one direction 
+- Important studies and experts are missing from references
 - Systematic reviews and meta-analyses are not cited  
 
 
@@ -1586,13 +1581,13 @@ _Examples_
 
 _Potential damages_  
 
-- Reduced replicability
-- Inflated confidence in the research    
+- Inflated confidence in the research
+- Reduced replicability    
 
 _Remedies_  
 
-- Disclose and justify every divergence from the preregistration
 - Avoid vagueness in preregistration
+- Disclose and justify every divergence from the preregistration
 - Use methods that will provide robust results even when preregistration is not specific at points (e.g. blind data analysis, cross-validation)    
 
 _Detectability_  
@@ -1601,13 +1596,13 @@ Yes
 
 _Clues to detect_  
 
-- Preregistration and published study differ on important aspects
-- Link to the preregistration in the manuscript does not work/ leads to a private OSF project  
+- Link to the preregistration in the manuscript does not work or leads to a page that cannot be accessed
+- Preregistration and published study differ on important aspects  
 
 
 ---
 
-**Not linking the Preregistration to the published study**  
+**Not linking the preregistration to the published study**  
 
 _Definition_    
 
@@ -1668,14 +1663,14 @@ _Examples_
 
 _Potential damages_  
 
-- Reduced reproducibility
-- Prevents data reuse    
+- Prevents data reuse
+- Reduced reproducibility    
 
 _Remedies_  
 
 - Data should be shared based on the FAIR (findable, accessible, interoperable, and reusable) principles and legislative context of the researcher 
-- Use synthetic datasets when original data can't be shared
-- If confidential and personal information makes participants identifiable, apply masking and anonymization, and then share data    
+- If confidential and personal information makes participants identifiable, apply masking and anonymization, and then share data
+- Use synthetic datasets when original data can't be shared    
 
 _Detectability_  
 
@@ -1683,8 +1678,8 @@ Yes
 
 _Clues to detect_  
 
-- No information in the publication on the availability of the data
-- Data are not shared according to FAIR principles  
+- Data are not shared according to FAIR principles
+- No information in the publication on the availability of the data  
 
 
 ---
@@ -1710,13 +1705,13 @@ _Examples_
 
 _Potential damages_  
 
-- Creates publication bias 
-- Creates a false sense of confidence in a multi-study paper    
+- Creates inflated confidence in a multi-study paper 
+- Creates publication bias    
 
 _Remedies_  
 
-- Publish all studies, even when the findings do not support hypotheses
-- Only preregister on platforms, that will eventually publish all preregistrations    
+- Only preregister on platforms, that will eventually publish all preregistrations
+- Publish all studies, even when the findings do not support hypotheses    
 
 _Detectability_  
 
@@ -1746,20 +1741,20 @@ Citation engineering
 
 _Examples_  
 
-Honorary authorship: Researcher adds a co-author who did not contribute to the manuscript.
-(2)     Ghost authorship: The researcher excludes a co-author who significantly contributed to the project.
-(3)     Controversial researcher writes a paper and publishes it under a pseudonym, so it seems that more than one person shares the same view.  
+(1) Honorary authorship: Researcher adds a co-author who did not contribute to the manuscript.
+(2) Ghost authorship: The researcher excludes a co-author who significantly contributed to the project.
+(3) Controversial researcher writes a paper and publishes it under a pseudonym, so it seems that more than one person shares the same view.  
 
 _Potential damages_  
 
-- Inflated confidence in the research based on the reputation of authors who were included in (or excluded from) the author list
-- Contributing authors may not get the credit they ought to get    
+- Contributing authors may not get the credit they ought to get
+- Inflated confidence in the research based on the reputation of authors who were included in (or excluded from) the author list    
 
 _Remedies_  
 
+- Explicitly declare contributions to the project (e.g., CRediT taxonomy)
 - Include everyone who made a significant contribution to the project
-- Only include authors who contributed to the project
-- Explicitly declare contributions to the project (e.g., CRediT taxonomy)    
+- Only include authors who contributed to the project    
 
 _Detectability_  
 
@@ -1794,14 +1789,13 @@ _Examples_
 
 _Potential damages_  
 
-- Inflated type I or type II error
 - Biased effect size estimates in meta-analyses (due to non-independence of results)
-- May increase the number of unreliable studies    
+- Inflated type I or type II error due to unknown family-wise error rate    
 
 _Remedies_  
 
-- Publish study results in one single publication or disclose all related papers
-- Preregister the study of publication strategy    
+- Preregister the publication strategy
+- Publish study results in one single publication or disclose all related papers    
 
 _Detectability_  
 
@@ -1809,10 +1803,10 @@ Maybe
 
 _Clues to detect_  
 
-- The methods suggest a large study but the scope of the paper is narrow
-- Several papers exist with similar outcomes or predictors based on the same dataset by the same researcher or lab
+- Absence of open data
 - Description of the sample is the same over several studies by the same researcher or lab
-- Absence of open data  
+- Several papers exist with similar outcomes or predictors based on the same dataset by the same researcher or lab
+- The methods suggest a large study but the scope of the paper is narrow  
 
 
 ---

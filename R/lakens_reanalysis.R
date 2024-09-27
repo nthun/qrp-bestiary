@@ -63,11 +63,11 @@ qrp_meta_res <-
 
 # A meta-analysis pooled effect sizes
 qrp_meta_res |> 
-  mutate(labels = paste0(labels, "\n k = ", k, ", N = ", n_sum),
+  mutate(labels = paste0(labels, "\nk = ", k, ", N = ", n_sum),
          labels = fct_reorder(labels, pred, .na_rm = TRUE)) |> 
   ggplot() +
   aes(x = pred, y = labels, xmin = ci.lb, xmax = ci.ub) +
-  geom_point(aes(size = n_sum)) +
+  geom_point(aes(size = n_sum), shape = 15) +
   geom_errorbar(width = .25) +
   scale_x_continuous(labels = scales::percent_format(), limits = c(0, 1)) +
   scale_size_continuous(trans = "log10", range = c(2,5)) +
@@ -101,6 +101,11 @@ qrp_meta_alt |>
   str()
 
 
+  labs(y = NULL, 
+       x = "Pooled prevalence (95% CI)", 
+       # title = "Pooled effect sizes (proportions) of QRP prevalence rates",
+       # caption  =" k: Number of studies, N: Total number of participants"
+       )
 
 
 # A Box plot of observed proportions (obsolete)

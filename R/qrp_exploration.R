@@ -285,9 +285,6 @@ rmarkdown::render("docs/qrp_text.Rmd", output_file = "qrp_text.docx")
 # Create a landscape layout -----------------------------------------------
 page_size = 4
 
-# TODO: Sort damages, clues, remedies, and sources based on alphabetic order
-# TODO: keep the bullet point look for damages, clues, remedies, and sources 
-
 qrp_long <-   
   qrp |> 
   # To create a paged wide layout, define the number of columns on the page
@@ -339,8 +336,11 @@ qrp_table <-
 
 qrp_table
 
+qrp_table
+
 # if gtsave doesn't work, export printed view as html manually!
 gtsave(qrp_table, "docs/qrp_table.html")
+
 
 
 
