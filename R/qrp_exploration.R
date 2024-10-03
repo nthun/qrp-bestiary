@@ -342,5 +342,30 @@ qrp_table
 gtsave(qrp_table, "docs/qrp_table.html")
 
 
+# Normal format -------------------------------------------------------------------------------
+qrp_table_wide <- 
+  qrp_long |> 
+  select(QRP = qrp, `Alias(es) & related concepts` = aliases, Definition = definition, `Umbrella term(s)` = umbrella_terms, `Research phase` = research_phase, `Example(s)`, `Potential harms` = damage, `Preventive measures` = remedy, Detectability = detectability, Clues = clues, Sources = `source(s)`) |> 
+  gt() |> 
+  fmt_markdown(columns = c(`Alias(es) & related concepts`, `Example(s)`, `Potential harms`, `Preventive measures`, Clues, Sources)) |> 
+  opt_row_striping(row_striping = TRUE) |> 
+  opt_table_lines(extent = "none") |> 
+  cols_width(starts_with(c("QRP", "Alias(es) & related concepts", "Umbrella term(s)", "Research phase","Detectability")) ~ px(120),
+             starts_with("Sources")~ px(350),
+             everything() ~ px(270)) |> 
+  tab_options(column_labels.background.color = "#CCCCCC",
+              column_labels.font.weight = "bold",
+              column_labels.font.size = 11, 
+              table.font.size = 11,
+              row.striping.background_color = "#EEEEEE") |> 
+  tab_style(style = cell_text(v_align = "top"),
+            locations = cells_body()) |> 
+  cols_align(columns = everything(),
+             align = "left")
+
+gtsave(qrp_table_wide, "docs/qrp_table_wide.html")
 
 
+
+
+  
