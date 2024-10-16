@@ -364,7 +364,9 @@ qrp_table_wide <-
              align = "left")
 
 gtsave(qrp_table_wide, "docs/qrp_table_wide.html")
-
+# !!!!
+# ADD THE FOLLOWING LINE IN THE HTML HEAD:
+# <link rel="stylesheet" type="text/css" href="no-indent-bullet.css">
 
 
 
