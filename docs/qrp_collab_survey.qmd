@@ -1,0 +1,82 @@
+---
+title: "Collaborator demographics and expertise survey"
+author: "Tamas Nagy"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r}
+#| include: false
+
+library(tidyverse)
+library(googlesheets4)
+library()
+
+
+```
+
+
+```{r}
+# Read data
+
+current_year <- 2024
+qrp_collab_form_id <- "1S9uab6LLN9BrDVKzYHBvbftRhIdNv9C5mlc-O-qCfEk"
+
+qrp_form_raw <- range_read(qrp_collab_form_id)
+
+# Process data: create variable names, calculate number of years
+
+qrp_form <- 
+  qrp_form_raw |> 
+  transmute(id = row_number(),
+            age = current_year - `Please state your year of birth.`,
+            gender = `Please state your gender.`,
+            ethnicity = `Please state your race/ ethnicity.`,
+            neurotype = `Which of these neurotypes apply to you?`,
+            start_position = `What best describes your academic position AT THE START OF THE PROJECT (June 2022)?`,
+            current_position = `What best describes your CURRENT academic position?`,
+            training_field = `What field are you trained in (what was the degree you obtained or are currently obtaining)?`,
+            research_fields = `In which psychological subdisciplines do you conduct research?`,
+            research_methods = `Which types of research methods have you used or are you currently using?`,
+            research_age = current_year - `Which year have you started conducting quantitative empirical research?`,
+            metaresearch_age = current_year - `Which year have you started conducting meta-scientific research?`,
+            publications = `How many peer-reviewed publications have you co-authored (including the ones where you are first author)?`,
+            publication_age = `Which year did you publish your first quantitative empirical peer-reviewed article (as a first author or co-author)?`,
+            h_index = `What is your h-Index (according to google scholar)?`,
+            no_sips = `How many SIPS have you attended AT THE START OF THE PROJECT (June 2022; including the SIPS in Victoria, BC)?`
+          )
+
+
+form_questions <- 
+  tibble(question = c("id", names(qrp_form_raw)[3:17]),
+         name = c(names(qrp_form)))
+  
+
+```
+
+## Age, gender, race/ethnicity, neurotype of collaborators
+```{r}
+qrp_form
+
+```
+
+
+## Position in 2022 and now
+```{r}
+
+```
+
+## Field of training and research. Research age, meta-research age
+```{r}
+
+```
+
+## Research output: no. of publications, publication age, h-index, 
+```{r}
+
+```
+
+
+
+
