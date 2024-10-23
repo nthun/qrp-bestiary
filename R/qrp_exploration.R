@@ -17,6 +17,20 @@ qrp <-
   select(-`assigned group`, -include) |> 
   mutate(research_phase = fct_inorder(research_phase))
 
+page_size = 4
+
+qrp_long <-   
+  qrp |> 
+  # To create a paged wide layout, define the number of columns on the page
+  mutate(page = ((row_number() - 1) %/% page_size) + 1) |> 
+  arrange(page, phase_order, qrp) |> 
+  mutate(clues = if_else(clues == "-", "None  \n", clues),
+         aliases = if_else(is.na(aliases), "--  \n", aliases),
+         umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
+         `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- "),
+         qrp = fct_inorder(qrp)
+  )
+
 
 # QRPs by research phase --------------------------------------------------
 qrp |> 
@@ -283,20 +297,6 @@ rmarkdown::render("docs/qrp_text.Rmd", output_file = "qrp_text.docx")
 
 
 # Create a landscape layout -----------------------------------------------
-page_size = 4
-
-qrp_long <-   
-  qrp |> 
-  # To create a paged wide layout, define the number of columns on the page
-  mutate(page = ((row_number() - 1) %/% page_size) + 1) |> 
-  arrange(page, phase_order, qrp) |> 
-  mutate(clues = if_else(clues == "-", "None  \n", clues),
-         aliases = if_else(is.na(aliases), "--  \n", aliases),
-         umbrella_terms = if_else(umbrella_terms == "-", "None  \n", umbrella_terms),
-         `source(s)` = str_replace_all(`source(s)`, "(?<=\n|^)", "- "),
-         qrp = fct_inorder(qrp)
-         )
-
 # Create a broken up table and reassemble to be able to print properly
 
 qrp_assembled <-
@@ -342,12 +342,24 @@ qrp_table
 gtsave(qrp_table, "docs/qrp_table.html")
 
 
-# Normal format -------------------------------------------------------------------------------
+# Wide format -------------------------------------------------------------------------------
 qrp_table_wide <- 
-  qrp_long |> 
-  select(QRP = qrp, `Alias(es) & related concepts` = aliases, Definition = definition, `Umbrella term(s)` = umbrella_terms, `Research phase` = research_phase, `Example(s)`, `Potential harms` = damage, `Preventive measures` = remedy, Detectability = detectability, Clues = clues, Sources = `source(s)`) |> 
+  qrp_long |>
+  select(
+    QRP = qrp,
+    `Alias(es) & related concepts` = aliases,
+    Definition = definition,
+    `QRP umbrella term(s)` = umbrella_terms,
+    `Research phase` = research_phase,
+    `Example(s)`,
+    `Potential harms` = damage,
+    `Preventive measures` = remedy,
+    Detectability = detectability,
+    Clues = clues,
+    Sources = `source(s)`
+  ) |>
   gt() |> 
-  fmt_markdown(columns = c(`Alias(es) & related concepts`, `Example(s)`, `Potential harms`, `Preventive measures`, Clues, Sources)) |> 
+  fmt_markdown(columns = c(`Alias(es) & related concepts`,  `QRP umbrella term(s)`, `Example(s)`, `Potential harms`, `Preventive measures`, Clues, Sources)) |> 
   opt_row_striping(row_striping = TRUE) |> 
   opt_table_lines(extent = "none") |> 
   cols_width(starts_with(c("QRP", "Alias(es) & related concepts", "Umbrella term(s)", "Research phase","Detectability")) ~ px(120),
@@ -364,6 +376,7 @@ qrp_table_wide <-
              align = "left")
 
 gtsave(qrp_table_wide, "docs/qrp_table_wide.html")
+
 # !!!!
 # ADD THE FOLLOWING LINE IN THE HTML HEAD:
 # <link rel="stylesheet" type="text/css" href="no-indent-bullet.css">
