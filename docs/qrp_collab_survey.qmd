@@ -11,8 +11,8 @@ editor_options:
 
 library(tidyverse)
 library(googlesheets4)
-library()
-
+library(skimr)
+library(ggalluvial)
 
 ```
 
@@ -29,6 +29,10 @@ qrp_form_raw <- range_read(qrp_collab_form_id)
 
 qrp_form <- 
   qrp_form_raw |> 
+  # One participant misread the question and answered in number of years instead of years. Fixing that here.
+  mutate(across(c(`Which year have you started conducting quantitative empirical research?`,
+                  `Which year have you started conducting meta-scientific research?`),
+                ~if_else(. < 1000, 2024-., .) )) |> 
   transmute(id = row_number(),
             age = current_year - `Please state your year of birth.`,
             gender = `Please state your gender.`,
@@ -42,11 +46,12 @@ qrp_form <-
             research_age = current_year - `Which year have you started conducting quantitative empirical research?`,
             metaresearch_age = current_year - `Which year have you started conducting meta-scientific research?`,
             publications = `How many peer-reviewed publications have you co-authored (including the ones where you are first author)?`,
-            publication_age = `Which year did you publish your first quantitative empirical peer-reviewed article (as a first author or co-author)?`,
+            publication_age = current_year - `Which year did you publish your first quantitative empirical peer-reviewed article (as a first author or co-author)?`,
             h_index = `What is your h-Index (according to google scholar)?`,
             no_sips = `How many SIPS have you attended AT THE START OF THE PROJECT (June 2022; including the SIPS in Victoria, BC)?`
-          )
-
+          ) |> 
+      # Aggregate ethnicity responses
+      mutate(ethnicity = if_else(str_detect(ethnicity, "White|white|European|Caucasian"), "Caucasian", ethnicity))
 
 form_questions <- 
   tibble(question = c("id", names(qrp_form_raw)[3:17]),
@@ -57,23 +62,94 @@ form_questions <-
 
 ## Age, gender, race/ethnicity, neurotype of collaborators
 ```{r}
-qrp_form
+qrp_form |> 
+  select(age, gender, ethnicity, neurotype) |> 
+  skim()
+
+qrp_form |> 
+  ggplot() +
+  aes(y = gender) +
+  geom_bar() +
+  scale_x_continuous(breaks = scales::pretty_breaks()) + 
+  labs(title = "Gender", y = NULL)
+
+qrp_form |> 
+  ggplot() +
+  aes(y = ethnicity) +
+  geom_bar() +
+  scale_x_continuous(breaks = scales::pretty_breaks()) + 
+  labs(title = "Ethnicity", y = NULL)
+
+qrp_form |> 
+  # select(id, neurotype) |> 
+  # separate_rows(neurotype, sep = ", ") |> 
+  ggplot() +
+  aes(y = neurotype) +
+  geom_bar() +
+  scale_x_continuous(breaks = scales::pretty_breaks()) + 
+  labs(title = "Neurotype", y = NULL)
+  
 
 ```
 
 
 ## Position in 2022 and now
 ```{r}
+qrp_form |> 
+  ggplot() +
+  aes(y = start_position) +
+  geom_bar() +
+  scale_x_continuous(breaks = scales::pretty_breaks()) + 
+  labs(title = "Starting position (2022)", y = NULL)
+
+qrp_form |> 
+  ggplot() +
+  aes(y = current_position) +
+  geom_bar() +
+  scale_x_continuous(breaks = scales::pretty_breaks()) + 
+  labs(title = "Current position (2024)", y = NULL)
+
+
+qrp_form |> 
+  select(id, start_position, current_position) |> 
+  ggplot() +
+  aes(axis1 = start_position, axis2 = current_position, label = after_stat(stratum), fill = after_stat(stratum)) +
+  geom_flow(aes(fill = start_position), show.legend = FALSE) +
+  geom_stratum(show.legend = FALSE) +
+  geom_text(stat = "stratum") +
+  labs(title = "Changes in positions from start to end of project") +
+  theme_void()
 
 ```
 
-## Field of training and research. Research age, meta-research age
+## Field of training and research. Research age, meta-research age, SIPS attended
 ```{r}
+qrp_form |> 
+  ggplot() +
+  aes(y = training_field) +
+  geom_bar() +
+  scale_x_continuous(breaks = scales::pretty_breaks()) + 
+  labs(title = "Field of training", y = NULL)
 
+qrp_form |> 
+  ggplot() +
+  aes(y = no_sips) +
+  geom_bar() +
+  scale_x_continuous(breaks = scales::pretty_breaks()) + 
+  labs(title = "Number of SIPS attended until 2022", y = NULL)
+
+qrp_form |> 
+  select(research_age, metaresearch_age) |> 
+  skim()
+  
 ```
 
 ## Research output: no. of publications, publication age, h-index, 
 ```{r}
+qrp_form |> 
+  select(publication_age, publications, h_index) |> 
+  skim()
+
 
 ```
 
