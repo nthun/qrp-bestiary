@@ -153,6 +153,37 @@ qrp_form |>
 
 ```
 
+## Field of interest, methods used
+
+```{r}
+
+fields_long <- 
+  qrp_form |> 
+  select(id, research_fields) |> 
+  separate_rows(research_fields, sep = ", ")
+
+fields_long |> 
+  ggplot() +
+  aes(y = fct_rev(fct_infreq(research_fields))) +
+  geom_bar() +
+  scale_x_continuous(breaks = scales::pretty_breaks()) + 
+  labs(y = NULL, title = "Number of collaborators with expertise in a specific field")
+
+
+methods_long <- 
+  qrp_form |> 
+  select(id, research_methods) |> 
+  separate_rows(research_methods, sep = ", ")
+
+methods_long |> 
+  ggplot() +
+  aes(y = fct_rev(fct_infreq(research_methods))) +
+  geom_bar() +
+  scale_x_continuous(breaks = scales::pretty_breaks()) + 
+  labs(y = NULL, title = "Number of collaborators with expertise in a specific method")
+
+
+```
 
 
 
