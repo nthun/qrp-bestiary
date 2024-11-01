@@ -6,7 +6,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r}
+```{r setup, include=FALSE}
 #| include: false
 
 library(tidyverse)
@@ -17,7 +17,7 @@ library(ggalluvial)
 ```
 
 
-```{r}
+```{r read_data, include=FALSE}
 # Read data
 
 current_year <- 2024
@@ -61,7 +61,7 @@ form_questions <-
 ```
 
 ## Age, gender, race/ethnicity, neurotype of collaborators
-```{r}
+```{r demographics}
 qrp_form |> 
   select(age, gender, ethnicity, neurotype) |> 
   skim()
@@ -94,7 +94,7 @@ qrp_form |>
 
 
 ## Position in 2022 and now
-```{r}
+```{r position}
 qrp_form |> 
   ggplot() +
   aes(y = start_position) +
@@ -123,7 +123,7 @@ qrp_form |>
 ```
 
 ## Field of training and research. Research age, meta-research age, SIPS attended
-```{r}
+```{r training_research_age}
 qrp_form |> 
   ggplot() +
   aes(y = training_field) +
@@ -145,7 +145,7 @@ qrp_form |>
 ```
 
 ## Research output: no. of publications, publication age, h-index, 
-```{r}
+```{r research_output}
 qrp_form |> 
   select(publication_age, publications, h_index) |> 
   skim()
@@ -155,7 +155,7 @@ qrp_form |>
 
 ## Field of interest, methods used
 
-```{r}
+```{r expertise}
 
 fields_long <- 
   qrp_form |> 
