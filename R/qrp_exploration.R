@@ -382,5 +382,33 @@ gtsave(qrp_table_wide, "docs/qrp_table_wide.html")
 # <link rel="stylesheet" type="text/css" href="no-indent-bullet.css">
 
 
+# Create a co-occurance table of damages ----------------------------------------------------------
+# Calculate how how often damages co-occur with each other
+
+
+library(widyr)
+
+harms_co <-
+  qrp_long |> 
+  select(qrp, damage_aggregated) |> 
+  separate_rows(damage_aggregated, sep = "\n|\r\n") |> 
+  mutate(damage_aggregated = str_remove(damage_aggregated, "- ") |> str_squish()) |> 
+  filter(!damage_aggregated %in% c("", "-", NA)) |> 
+  pairwise_count(damage_aggregated, qrp, sort = TRUE, upper = TRUE) 
+
+
+harms_co |>
+  mutate(prop = n / nrow(qrp_long),
+         item1 = fct_inorder(item1),
+         item2 = factor(item2, levels = levels(item1))) |>
+  ggplot() +
+  aes(x = item1, y = item2, fill = prop) +
+  geom_tile() +
+  scale_fill_viridis_c(option = "inferno", na.value = "grey50") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = NULL, y = NULL, fill = "N") 
 
   
+
+
