@@ -50,12 +50,14 @@ qrp_form <-
             h_index = `What is your h-Index (according to google scholar)?`,
             no_sips = `How many SIPS have you attended AT THE START OF THE PROJECT (June 2022; including the SIPS in Victoria, BC)?`
           ) |> 
-      # Aggregate ethnicity responses
-      mutate(ethnicity = if_else(str_detect(ethnicity, "White|white|European|Caucasian"), "Caucasian", ethnicity))
+  # Aggregate ethnicity responses
+  mutate(ethnicity = if_else(str_detect(ethnicity, "White|white|European|Caucasian"), "Caucasian", ethnicity),
+         current_position = if_else(str_detect(current_position, "Research"), "Research professional/scientist", current_position)) |> 
+  # Remove duplicate cases
+  group_by(age, gender, ethnicity, start_position, current_position, training_field, research_fields) |> 
+  slice(1) |>
+  ungroup()
 
-form_questions <- 
-  tibble(question = c("id", names(qrp_form_raw)[3:17]),
-         name = c(names(qrp_form)))
   
 
 ```
