@@ -2,6 +2,9 @@
 title: "Collaborator demographics and expertise survey"
 author: "Tamas Nagy"
 format: html
+toc: true
+toc_float: true
+toc-location: left
 editor_options: 
   chunk_output_type: console
 ---
@@ -13,6 +16,8 @@ library(tidyverse)
 library(googlesheets4)
 library(skimr)
 library(ggalluvial)
+
+theme_set(theme_light())
 
 ```
 
@@ -47,7 +52,7 @@ qrp_form <-
             metaresearch_age = current_year - `Which year have you started conducting meta-scientific research?`,
             publications = `How many peer-reviewed publications have you co-authored (including the ones where you are first author)?`,
             publication_age = current_year - `Which year did you publish your first quantitative empirical peer-reviewed article (as a first author or co-author)?`,
-            h_index = `What is your h-Index (according to google scholar)?`,
+            h_index = `corrected h-index`,
             no_sips = `How many SIPS have you attended AT THE START OF THE PROJECT (June 2022; including the SIPS in Victoria, BC)?`
           ) |> 
   # Aggregate ethnicity responses
