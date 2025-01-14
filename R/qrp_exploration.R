@@ -5,6 +5,7 @@ library(googlesheets4)
 library(tidytext)
 library(gt)
 library(janitor)
+source("R/calculate_agreement.R")
 
 theme_set(theme_light())
 
@@ -103,7 +104,7 @@ paste0(credit$Surname,
        ) |> 
   paste(collapse = "; ")
 
-# Harms -----------------------------------------------------------------
+# Potential harms -----------------------------------------------------------------
 min_damage_n = 3
 
 qrp |> 
@@ -111,7 +112,7 @@ qrp |>
   separate_rows(damage_aggregated, sep = "- |\n") |> 
   filter(!damage_aggregated %in% c("", "-", NA)) |> 
   count(damage_aggregated, sort = TRUE) |> 
-  filter(n > 3) |> 
+  filter(n > min_damage_n) |> 
   print(n = 100) 
 
 # Create a table, with aggregated harms
@@ -155,7 +156,7 @@ qrp |>
   count(damage, sort = TRUE)
 
 
-# List inflated confidence damages ------------------------------------------------------------
+# List inflated confidence damages 
 qrp |> 
   filter(str_detect(damage_aggregated, "confidence|credibility")) |> 
   separate_rows(damage, sep = "\n|\r\n") |> 
@@ -166,8 +167,16 @@ qrp |>
   count(damage, sort = TRUE)
 
 
+# List damages with inflated credibility 
+qrp |> 
+  separate_rows(damage_aggregated, sep = "\n|\r\n") |> 
+  transmute(qrp, damage_aggregated = str_remove(damage_aggregated, "- ") |> str_squish()) |> 
+  filter(str_detect(damage_aggregated, "credibility")) |> 
+  pull(qrp)
 
-# Remedies -----------------------------------------------------------------
+
+
+# Preventive measures -----------------------------------------------------------------
 qrp |> 
   select(qrp, remedy) |> 
   separate_rows(remedy, sep = "- |\n") |> 
@@ -211,6 +220,15 @@ qrp |>
     table.align = "left") |> 
     gtsave("docs/remedies_table.docx")
 
+
+# List other remedies
+
+qrp |> 
+  separate_rows(remedy_aggregated, sep = "\n|\r\n") |> 
+  separate_rows(remedy, sep = "\n|\r\n") |> 
+  transmute(qrp, remedy_aggregated, remedy = str_remove(remedy, "- ") |> str_squish()) |> 
+  filter(str_detect(remedy_aggregated, "Other")) |> 
+  select(qrp, remedy) |> pull(remedy)
 
 
 # Detectability -----------------------------------------------------------
@@ -385,30 +403,125 @@ gtsave(qrp_table_wide, "docs/qrp_table_wide.html")
 # Create a co-occurance table of damages ----------------------------------------------------------
 # Calculate how how often damages co-occur with each other
 
-
-library(widyr)
-
-harms_co <-
+harms_table <- 
   qrp_long |> 
   select(qrp, damage_aggregated) |> 
   separate_rows(damage_aggregated, sep = "\n|\r\n") |> 
   mutate(damage_aggregated = str_remove(damage_aggregated, "- ") |> str_squish()) |> 
-  filter(!damage_aggregated %in% c("", "-", NA)) |> 
-  pairwise_count(damage_aggregated, qrp, sort = TRUE, upper = TRUE) 
+  mutate(value = 1) 
+
+main_harms <- 
+  harms_table |> 
+  count(damage_aggregated) |> 
+  filter(n >= 10) |>
+  pull(damage_aggregated)
+
+# TODO: Why no biased effect size in item2?
+harms_agreement <-
+  harms_table |> 
+  pivot_wider(names_from = damage_aggregated, values_from = value, values_fill = 0) |>
+  calculate_agreement() |> view()
+  complete(item1, item2) |>
+  filter((item1 %in% main_harms) & (item2 %in% main_harms)) |> 
+  replace_na(list(agreement_prop = 0, both_present = 0, both_absent = 0, one_present = 0, other_present = 0)) |> 
+  # mutate(item1 = fct_relevel(item1, sort),
+  #        item2 = fct_relevel(item2, sort)) |> 
+  force()
+
+# Agreement table
+harms_agreement |> 
+  ggplot() +
+  aes(x = item1, y = item2, fill = agreement_prop, label = scales::percent(agreement_prop)) +
+  geom_tile() +
+  geom_text(color = "white") +
+  scale_fill_gradient(labels = scales::percent_format(), low = "black", high = "green") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = NULL, y = NULL, fill = "%", title = "Proportion of agreement between harms",
+       subtitle = "Proportion of cases where both harms are present or absent")
+
+# Co-occurance and co-absance table
+harms_agreement |> 
+  select(item1, item2, starts_with("both")) |> 
+  pivot_longer(starts_with("both"), names_to = "metric", values_to = "n") |> 
+  mutate(metric = snakecase::to_sentence_case(metric)) |> 
+  ggplot() +
+  aes(x = item1, y = item2, fill = n, label = n) +
+  geom_tile() +
+  geom_text(color = "grey30") +
+  scale_fill_gradient(low = "black", high = "green") +
+  facet_wrap(~metric) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = NULL, y = NULL, fill = "N")
 
 
+
+# Co-occurance table --------------------------------------------------------
+
+
+harms_co <- 
+  harms_table |>
+  widyr::pairwise_count(item = damage_aggregated, feature = qrp, sort = TRUE) |>
+  filter((item1 %in% main_harms) & (item2 %in% main_harms)) |> 
+  complete(item1, item2) %>%
+  mutate(n = replace_na(n, 0), 
+         prop = n / nrow(qrp_long),
+         item1 = fct_inorder(item1),
+         item2 = factor(item2, levels = levels(item1))) 
+
+# N
 harms_co |>
-  mutate(prop = n / nrow(qrp_long),
+  ggplot() +
+  aes(x = item1, y = item2, fill = n, label = n) +
+  geom_tile() +
+  geom_text(color = "grey50") +
+  scale_fill_gradient(low = "black", high = "green") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(x = NULL, y = NULL, fill = "N", title = "Number of co-occurring harms")
+
+# Prop
+harms_table |>
+  widyr::pairwise_count(item = damage_aggregated, feature = qrp, sort = TRUE) |>
+  filter((item1 %in% main_harms) & (item2 %in% main_harms)) |> 
+  complete(item1, item2) %>%
+  mutate(n = replace_na(n, 0), 
+         prop = n / nrow(qrp_long),
          item1 = fct_inorder(item1),
          item2 = factor(item2, levels = levels(item1))) |>
   ggplot() +
-  aes(x = item1, y = item2, fill = prop) +
+  # aes(x = item1, y = item2, fill = prop, label = scales::percent(prop)) +
+  aes(x = item1, y = item2, fill = n, label = n) +
   geom_tile() +
-  scale_fill_viridis_c(option = "inferno", na.value = "grey50") +
+  geom_text(color = "grey50") +
+  # scale_fill_gradient(labels = scales::percent_format(), low = "black", high = "green") +
+  scale_fill_gradient(labels = n, low = "black", high = "green") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-  labs(x = NULL, y = NULL, fill = "N") 
+  labs(x = NULL, y = NULL, fill = "%", title = "Proportion of co-occurring harms")
 
+
+qrp_long |> 
+  summarise(n_stat = str_detect(damage_aggregated, "statistical") |> sum(na.rm = TRUE),
+            n_power = str_detect(damage_aggregated, "effect size") |> sum(na.rm = TRUE))
   
 
 
+  
+
+harms_table |> 
+  calculate_agreement()
+
+
+  
+  
+
+data <- harms_table
+
+
+
+
+
+  
+  
