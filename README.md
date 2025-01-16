@@ -1,3 +1,3 @@
 - QRP Bestiary Table (dynamic): https://nthun.github.io/qrp-bestiary/qrp_bestiary_table.html
+- QRP Bestiary Table (static): https://nthun.github.io/qrp-bestiary/qrp_table_wide.html
 - Co-author analysis: https://nthun.github.io/qrp-bestiary/qrp_collab_survey.html
-- Static QRP table: https://nthun.github.io/qrp-bestiary/qrp_table_wide.html
