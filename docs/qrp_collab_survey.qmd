@@ -1,7 +1,9 @@
 ---
 title: "Collaborator demographics and expertise survey"
 author: "Tamas Nagy"
-format: html
+format: 
+  html: default
+  pdf: default
 toc: true
 toc_float: true
 toc-location: left
