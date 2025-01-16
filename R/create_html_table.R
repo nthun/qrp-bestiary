@@ -89,7 +89,9 @@ html_output <- tagList(
   tags$h1("QRP Bestiary"),
   # Add the DataTable CSS
   tags$head(
-    tags$link(rel = "stylesheet", href = "https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css")
+    tags$link(rel = "stylesheet", href = "https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css"),
+    tags$script(src = "https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"),
+    tags$script(src = "https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js")
   ),
   # Add the datatable
   datatable_html
@@ -98,6 +100,3 @@ html_output <- tagList(
 
 # Save the HTML file
 save_html(html_output, "docs/qrp_bestiary_table.html")
-
-
-
