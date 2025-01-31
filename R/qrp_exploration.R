@@ -361,7 +361,7 @@ gtsave(qrp_table, "docs/qrp_table.html")
 
 
 # Wide format -------------------------------------------------------------------------------
-qrp_table_wide <- 
+qrp_table_wide <-
   qrp_long |>
   select(
     QRP = qrp,
@@ -376,6 +376,7 @@ qrp_table_wide <-
     Clues = clues,
     Sources = `source(s)`
   ) |>
+  group_by(`Research phase`) |>
   gt() |> 
   fmt_markdown(columns = c(`Alias(es) & related concepts`,  `QRP umbrella term(s)`, `Example(s)`, `Potential harms`, `Preventive measures`, Clues, Sources)) |> 
   opt_row_striping(row_striping = TRUE) |> 
@@ -385,19 +386,22 @@ qrp_table_wide <-
              everything() ~ px(270)) |> 
   tab_options(column_labels.background.color = "#CCCCCC",
               column_labels.font.weight = "bold",
-              column_labels.font.size = 11, 
-              table.font.size = 11,
+              column_labels.font.size = "large", 
+              table.font.size = "small",
               row.striping.background_color = "#EEEEEE") |> 
   tab_style(style = cell_text(v_align = "top"),
             locations = cells_body()) |> 
+  tab_style(style = list(cell_text(weight = "bold", size = "medium"), cell_fill(color = "#DDDDDD")),
+            locations = cells_row_groups()) |> 
   cols_align(columns = everything(),
-             align = "left")
+             align = "left") |>
+  # Add custom css to remove indentation from list items
+  opt_css(css = "ul {
+                     padding-left: 0;
+                     list-style-position: inside;
+                     }")
 
 gtsave(qrp_table_wide, "docs/qrp_table_wide.html")
-
-# !!!!
-# ADD THE FOLLOWING LINE IN THE HTML HEAD:
-# <link rel="stylesheet" type="text/css" href="no-indent-bullet.css">
 
 
 # Create a co-occurance table of damages ----------------------------------------------------------
